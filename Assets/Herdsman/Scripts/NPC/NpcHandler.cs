@@ -1,6 +1,5 @@
-using GameEntities.Abstract;
-using GameEntities.Handler;
-using GameEntities.Spawner;
+using Common.GameEntities.Handler;
+using Common.GameEntities.Spawner;
 using NPC.Entity;
 
 namespace NPC

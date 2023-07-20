@@ -1,7 +1,7 @@
 ﻿using Adic.Container;
-using Dependecies.Abstract;
-using GameEntities.Abstract;
-using GameEntities.Spawner;
+using Common.Dependecies.Abstract;
+using Common.GameEntities.Abstract;
+using Common.GameEntities.Spawner;
 using NPC.Entity;
 using UnityEngine;
 

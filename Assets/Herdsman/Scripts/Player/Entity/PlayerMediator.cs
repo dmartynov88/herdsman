@@ -1,4 +1,4 @@
-using GameEntities.Abstract;
+using Common.GameEntities.Abstract;
 
 namespace Player.Entity
 {

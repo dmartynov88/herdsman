@@ -1,4 +1,4 @@
-﻿using GameEntities.Pool;
+﻿using Common.GameEntities.Pool;
 using Player.Entity;
 
 namespace Player

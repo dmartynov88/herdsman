@@ -1,0 +1,19 @@
+{
+    "name": "Common.GameEntities.Spawner",
+    "rootNamespace": "",
+    "references": [
+        "GUID:77500a04394aa534d8702c4f3acbafa7",
+        "GUID:51544660a5f578b478b37a58357ead15",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:851ecfda604e3594ab4df9fabdca2e7b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

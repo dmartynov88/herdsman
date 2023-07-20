@@ -1,0 +1,4 @@
+{
+	"name": "Common.GameEntities.Handler",
+	"references":[ "GUID:51544660a5f578b478b37a58357ead15", "GUID:7abe47e7dc8d9f341b4e73827537a986", "GUID:f51ebe6a0ceec4240a699833d6309b23", "GUID:851ecfda604e3594ab4df9fabdca2e7b" ]
+}
