@@ -1,4 +1,14 @@
 {
-	"name": "GameStates.Abstract",
-	"references":[ "GUID:d232d1c8e7fc59445a0ca86abcd351c8", "GUID:685e3a404237a214c94a19dff814ae13", "GUID:f06caa928e4846248a863768b755fb19", "GUID:b17968b701f148f48b48541f1834f996" ]
+    "name": "GameStates.Abstract",
+    "rootNamespace": "",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

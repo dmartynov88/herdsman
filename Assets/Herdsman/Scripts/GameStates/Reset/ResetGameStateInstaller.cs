@@ -9,7 +9,8 @@ namespace Herdsman.Scripts.GameStates.Reset
     {
         public override void Install(IInjectionContainer container)
         {
-            container.Bind<ResetStateHandler>().To(new ResetStateHandler());
+            container.Bind<ResetStateHandler>().ToSingleton();
+            container.Bind<ResetGameState>().ToSingleton();
         }
     }
 }

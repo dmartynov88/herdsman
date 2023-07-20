@@ -9,7 +9,8 @@ namespace GameStates.Game
     {
         public override void Install(IInjectionContainer container)
         {
-            container.Bind<GameStateHandler>().To(new GameStateHandler());
+            container.Bind<GameStateHandler>().ToSingleton();
+            container.Bind<GameState>().ToSingleton();
         }
     }
 }

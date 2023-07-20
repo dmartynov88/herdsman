@@ -2,6 +2,6 @@
 {
     public interface IGameStatesProvider
     {
-        IGameState GetStateByType(int gameStateTypeId);
+        IGameState GetStateByTypeId(int gameStateTypeId);
     }
 }

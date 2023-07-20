@@ -17,13 +17,13 @@ namespace GameStates.Service
             this.resetGameState = resetGameState;
         }
 
-        public IGameState GetStateByType(int gameStateTypeId)
+        public IGameState GetStateByTypeId(int gameStateTypeId)
         {
             return (GameStateType)gameStateTypeId switch
             {
                 GameStateType.Main => mainGameState,
-                GameStateType.Game => mainGameState,
-                GameStateType.Reset => mainGameState,
+                GameStateType.Game => gameState,
+                GameStateType.Reset => resetGameState,
                 _ => throw new ArgumentException($"Can't get state by GameStateType {(GameStateType)gameStateTypeId}")
             };
         }
