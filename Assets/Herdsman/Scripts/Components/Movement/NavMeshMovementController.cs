@@ -22,8 +22,9 @@ namespace Components.Movement
             if (agent.isStopped)
             {
                 agent.isStopped = false;
-                agent.SetDestination(target);
             }
+            
+            agent.SetDestination(target);
         }
 
         public override void Stop()

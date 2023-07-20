@@ -2,7 +2,7 @@ using Adic.Container;
 using Common.Dependecies.Abstract;
 using UnityEngine;
 
-namespace Services.Input
+namespace Services.InputSystem
 {
     [CreateAssetMenu(fileName = "InputInstaller", menuName = "Installers/InputInstaller")]
     public class InputInstaller : ScriptableObjectInstaller

@@ -3,7 +3,7 @@ using Common.GameEntities.Models;
 using Common.GameEntities.Spawner;
 using Cysharp.Threading.Tasks;
 using Player.Entity;
-using Services.Input;
+using Services.InputSystem;
 
 namespace Player
 {
