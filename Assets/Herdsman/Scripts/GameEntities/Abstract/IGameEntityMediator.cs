@@ -1,40 +1,42 @@
-
-using System;
 using Cysharp.Threading.Tasks;
+using GameEntities.Models;
 
-public interface IGameEntityMediator<TView>
-    where TView : IGameEntityView
+namespace GameEntities.Abstract
 {
-    UniTask Initialize(TView view, SpawnData spawnData);
-    void Destroy(out TView view);
-}
-
-public abstract class GameEntityMediatorBase<TView> : IGameEntityMediator<TView>
-    where TView : IGameEntityView
-{
-    protected TView View { get; private set; }
-
-    public UniTask Initialize(TView view, SpawnData spawnData)
+    public interface IGameEntityMediator<TView>
+        where TView : IGameEntityView
     {
-        View = view;
-        if (!View.HasGraphics)
+        UniTask Initialize(TView view, SpawnData spawnData);
+        void Destroy(out TView view);
+    }
+
+    public abstract class GameEntityMediatorBase<TView> : IGameEntityMediator<TView>
+        where TView : IGameEntityView
+    {
+        protected TView View { get; private set; }
+
+        public UniTask Initialize(TView view, SpawnData spawnData)
         {
-            //await Get object from addressables spawnData.name
+            View = view;
+            if (!View.HasGraphics)
+            {
+                //await Get object from addressables spawnData.name
+            }
+
+            OnViewReady();
+            return UniTask.CompletedTask;
         }
-        
-        OnViewReady();
-        return UniTask.CompletedTask;
+
+        public void Destroy(out TView view)
+        {
+            OnDestroy();
+            view = View;
+        }
+
+        //Subscribe to view events
+        protected abstract void OnViewReady();
+
+        //Unsubscribe from view events
+        protected abstract void OnDestroy();
     }
-
-    public void Destroy(out TView view)
-    {
-        OnDestroy();
-        view = View;
-    }
-
-    //Subscribe to view events
-    protected abstract void OnViewReady();
-
-    //Unsubscribe from view events
-    protected abstract void OnDestroy();
 }

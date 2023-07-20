@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GameEntities.Abstract;
 using UnityEngine;
 
 //Simple stupid pool for test
