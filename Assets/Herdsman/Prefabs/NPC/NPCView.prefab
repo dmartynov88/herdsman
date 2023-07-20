@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4412423766666622893}
   - component: {fileID: 6303605269282840196}
+  - component: {fileID: -2781670460612485206}
+  - component: {fileID: 1154568601375087964}
   m_Layer: 0
   m_Name: NPCView
   m_TagString: Untagged
@@ -44,3 +46,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0266dc5779d200d4484bef3bc636fd53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2781670460612485206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7874518919337101697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d00a6a34f54cbbaf5df399984c4150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 1154568601375087964}
+  transform: {fileID: 4412423766666622893}
+--- !u!195 &1154568601375087964
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7874518919337101697}
+  m_Enabled: 1
+  m_AgentTypeID: -1372625422
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

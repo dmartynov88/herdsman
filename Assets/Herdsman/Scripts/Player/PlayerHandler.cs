@@ -3,6 +3,7 @@ using Common.GameEntities.Models;
 using Common.GameEntities.Spawner;
 using Cysharp.Threading.Tasks;
 using Player.Entity;
+using Services.Input;
 
 namespace Player
 {
@@ -11,22 +12,27 @@ namespace Player
         //Main player game logic
         //Subscribe to PlayerMediator events
 
+        private readonly InputService inputService;
+        
         private const string playerAddressableName = "Player";
         private PlayerMediator playerMediator;
 
-        public PlayerHandler(GameEntitySpawner<PlayerMediator, PlayerView> spawner) : base(spawner)
+        public PlayerHandler(InputService inputService, GameEntitySpawner<PlayerMediator, PlayerView> spawner) : base(spawner)
         {
+            this.inputService = inputService;
         }
 
         public async UniTaskVoid CreatePlayer()
         {
             playerMediator = await CreateMediator(new SpawnData() { AddressableName = playerAddressableName });
+            inputService.RegisterPositionReceiver(playerMediator);
         }
 
         public void DestroyPlayer()
         {
             if (playerMediator != null)
             {
+                inputService.ClearPositionReceiver();
                 DestroyMediator(playerMediator);
             }
         }

@@ -17,8 +17,8 @@ namespace Player
             var pool = Instantiate(poolPrefab);
             var factory = new GameEntityMediatorFactory<PlayerMediator, PlayerView>();
             var spawner = new GameEntitySpawner<PlayerMediator, PlayerView>(pool, factory);
-            var handler = new PlayerHandler(spawner);
-            container.Bind<PlayerHandler>().To(handler);
+            container.Bind<GameEntitySpawner<PlayerMediator, PlayerView>>().To(spawner);
+            container.Bind<PlayerHandler>().ToSingleton();
         }
     }
 }

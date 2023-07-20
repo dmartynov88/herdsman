@@ -9,7 +9,6 @@ public class MainGameStateHandler : IGameStateHandler
 
     public void Start()
     {
-        UnityEngine.Debug.Log($"Start Main {GameStatesService}");
         GameStatesService.SwitchState((int)GameStateType.Game);
     }
 
