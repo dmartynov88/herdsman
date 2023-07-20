@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Common.States.Abstract;
+using Cysharp.Threading.Tasks;
 
-public class GameStateHandler : MonoBehaviour
+public class GameStateHandler : IGameStateHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    public UniTask Start()
     {
-        
+        return UniTask.CompletedTask;
     }
 
-    // Update is called once per frame
-    void Update()
+    public UniTask Finish()
     {
-        
+        return UniTask.CompletedTask;
     }
 }

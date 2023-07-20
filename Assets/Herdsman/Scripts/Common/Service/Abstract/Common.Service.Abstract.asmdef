@@ -1,3 +1,4 @@
 {
-	"name": "Common.Service.Abstract"
+	"name": "Common.Service.Abstract",
+	"references":[ "GUID:f51ebe6a0ceec4240a699833d6309b23" ]
 }

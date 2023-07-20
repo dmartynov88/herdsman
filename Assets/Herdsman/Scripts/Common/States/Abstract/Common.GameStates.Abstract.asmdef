@@ -1,0 +1,4 @@
+{
+	"name": "Common.GameStates.Abstract",
+	"references":[ "GUID:f51ebe6a0ceec4240a699833d6309b23", "GUID:4b7723ae46fd5fa4c9e531561493d271", "GUID:fda26ff67e66b7a4fb35fc6ae955845e" ]
+}

@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57b783c6b4364d52a51e6061676f17d4, type: 3}
-  m_Name: NpcInstaller
+  m_Script: {fileID: 11500000, guid: 7021b24372d84217881dca9e4c296d51, type: 3}
+  m_Name: ResetGameStateInstaller
   m_EditorClassIdentifier: 
-  poolPrefab: {fileID: 1993631428592461342, guid: c71b104f5eb3cda48bb4c5f1fbb77a50, type: 3}

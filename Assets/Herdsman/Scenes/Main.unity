@@ -249,6 +249,8 @@ MonoBehaviour:
   monoInstallers: []
   soInstallers:
   - {fileID: 11400000, guid: f5232cf0040153e42a1d429f07aee778, type: 2}
+  - {fileID: 11400000, guid: 1068b00a5f4e91c43a39df7df2fb5804, type: 2}
+  - {fileID: 11400000, guid: df3252a3add23ee4897d33cf8a12e2e1, type: 2}
 --- !u!4 &2130486099
 Transform:
   m_ObjectHideFlags: 0
