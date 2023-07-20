@@ -7,7 +7,7 @@ namespace Common.GameEntities.Abstract
     {
         Transform Transform { get; }
         public bool HasGraphics { get; }
-        void SetViewObject(GameObject viewObject);
+        void CacheViewObject(GameObject viewObject);
         void ResetView();
     }
 
@@ -15,36 +15,32 @@ namespace Common.GameEntities.Abstract
     {
         public Transform Transform { get; private set; }
         public bool HasGraphics { get; private set; }
+        
+        private GameObject viewObject;
 
         private void Awake()
         {
             Transform = transform;
         }
+        
 
-        public virtual void SetViewObject(GameObject viewObject)
+        public void CacheViewObject(GameObject viewObject)
         {
-            if (viewObject != null)
-            {
-                transform.SetParent(Transform, false);
-                InitializeView();
-                HasGraphics = true;
-            }
-            else
-            {
-                throw new ArgumentException("View game object is null!");
-            }
+            this.viewObject = viewObject;
+            InitializeView();
+            HasGraphics = true;
         }
-
+        
         //Subscribe and cache to view components
         protected virtual void InitializeView()
         {
-
+            
         }
 
         //Unsubscribe from view components
         public virtual void ResetView()
         {
-
+            
         }
     }
 }

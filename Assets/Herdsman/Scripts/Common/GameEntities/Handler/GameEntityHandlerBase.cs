@@ -20,5 +20,10 @@ namespace Common.GameEntities.Handler
         {
             return spawner.CreateMediator(spawnData);
         }
+
+        protected void DestroyMediator(TMediator mediator)
+        {
+            spawner.DestroyMediator(mediator);
+        }
     }
 }
