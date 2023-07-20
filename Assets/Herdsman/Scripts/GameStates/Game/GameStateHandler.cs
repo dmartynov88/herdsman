@@ -3,9 +3,9 @@ using Cysharp.Threading.Tasks;
 
 public class GameStateHandler : IGameStateHandler
 {
-    public UniTask Start()
+    public void Start()
     {
-        return UniTask.CompletedTask;
+        UnityEngine.Debug.Log($"Start Game");
     }
 
     public UniTask Finish()

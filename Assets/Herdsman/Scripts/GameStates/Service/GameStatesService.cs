@@ -5,12 +5,17 @@ namespace GameStates.Service
 {
     public class GameStatesService : GameStatesServiceBase
     {
-        public GameStatesService(IGameStateFactory statesFactory) : base(statesFactory)
+        
+        public override void Initialize(IGameStatesProvider statetsProvider)
         {
-        }
-        protected override void CreateGameStates()
-        {
+            var mainStateId = (int)GameStateType.Main;
+            AddState(mainStateId, statetsProvider.GetStateByTypeId(mainStateId));
+
+            var gameStateId = (int)GameStateType.Game;
+            AddState(gameStateId, statetsProvider.GetStateByTypeId(gameStateId));
             
+            var resetStateId = (int)GameStateType.Reset;
+            AddState(resetStateId, statetsProvider.GetStateByTypeId(resetStateId));
         }
     }
 }

@@ -3,9 +3,9 @@ using Cysharp.Threading.Tasks;
 
 public class ResetStateHandler : IGameStateHandler
 {
-    public UniTask Start()
+    public void Start()
     {
-        return UniTask.CompletedTask;
+        
     }
 
     public UniTask Finish()

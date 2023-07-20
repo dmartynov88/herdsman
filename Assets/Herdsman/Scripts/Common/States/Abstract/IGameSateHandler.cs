@@ -4,7 +4,7 @@ namespace Common.States.Abstract
 {
     public interface IGameStateHandler
     {
-        UniTask Start();
+        void Start();
         UniTask Finish();
     }
 }

@@ -1,11 +1,16 @@
+using Adic;
 using Common.States.Abstract;
 using Cysharp.Threading.Tasks;
+using GameStates.Abstract;
 
 public class MainGameStateHandler : IGameStateHandler
 {
-    public UniTask Start()
+    [Inject] private IGameStatesService GameStatesService { get; set; }
+
+    public void Start()
     {
-        return UniTask.CompletedTask;
+        UnityEngine.Debug.Log($"Start Main {GameStatesService}");
+        GameStatesService.SwitchState((int)GameStateType.Game);
     }
 
     public UniTask Finish()

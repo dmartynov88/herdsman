@@ -4,7 +4,7 @@ namespace Common.States.Abstract
 {
     public interface IGameState
     {
-        UniTask Enter();
+        void Enter();
         UniTask Exit();
     }
 }

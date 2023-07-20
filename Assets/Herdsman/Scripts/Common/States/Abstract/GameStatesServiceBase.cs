@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Common.Service.Abstract;
 using Cysharp.Threading.Tasks;
@@ -5,28 +6,13 @@ using Cysharp.Threading.Tasks;
 namespace Common.States.Abstract
 {
     //ToDo bind by IGameStatesService
-    public abstract class GameStatesServiceBase : IGameStatesService, IService
+    public abstract class GameStatesServiceBase : IGameStatesService
     {
         private readonly Dictionary<int, IGameState> states = new();
-        private readonly IGameStateFactory statesFactory;
 
         private IGameState currentState;
 
-
-        protected GameStatesServiceBase(IGameStateFactory statesFactory)
-        {
-            this.statesFactory = statesFactory;
-        }
-
-        //create and cache game states
-
-        public UniTask Initialize()
-        {
-            CreateGameStates();
-            return UniTask.CompletedTask;
-        }
-
-        protected abstract void CreateGameStates();
+        public abstract void Initialize(IGameStatesProvider statetsProvider);
 
         //ToDo add logic for specific transitions if needed
         public async UniTask SwitchState(int gameStateTypeId)
@@ -40,7 +26,15 @@ namespace Common.States.Abstract
 
                 currentState = nextState;
 
-                await currentState.Enter();
+                currentState.Enter();
+            }
+        }
+
+        protected void AddState(int gameStateTypeId, IGameState state)
+        {
+            if (!states.TryAdd(gameStateTypeId, state))
+            {
+                throw new ArgumentException($"Can't add state {state.GetType()}");
             }
         }
     }

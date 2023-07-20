@@ -12,12 +12,18 @@ namespace GameStates.Service
         
         public override void Install(IInjectionContainer container)
         {
+            container.Bind<IGameStatesService>().ToSingleton<GameStatesService>();
+            
             foreach (ScriptableObjectInstaller soInstaller in statesInstallers)
             {
                 soInstaller.Install(container);
             }
+
+            container.Bind<GameStatesProvider>().ToSingleton();
+            var statesService = container.Resolve<IGameStatesService>();
             
-            container.Bind<IGameStatesService>().ToSingleton<GameStatesService>();
+            statesService.Initialize(container.Resolve<GameStatesProvider>());
+
         }
     }
 }
