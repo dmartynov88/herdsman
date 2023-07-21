@@ -1,8 +1,12 @@
+using System.Collections.Generic;
 using Adic;
+using Common.GameEntities.Models;
 using Common.Scenes.Abstract;
 using Common.States.Abstract;
 using Cysharp.Threading.Tasks;
+using NPC;
 using Player;
+using UnityEngine;
 
 public class GameStateHandler : IGameStateHandler
 {
@@ -11,6 +15,7 @@ public class GameStateHandler : IGameStateHandler
     [Inject] private ISceneConfigProvider sceneConfigProvider;
     [Inject] private GameFieldHandler gameFieldHandler;
     [Inject] private PlayerHandler PlayerHandler { get; set; }
+    [Inject] private NpcHandler NpcHandler { get; set; }
 
 
     //Load Field scene
@@ -28,7 +33,12 @@ public class GameStateHandler : IGameStateHandler
     private async UniTaskVoid Initialize()
     {
         await gameFieldHandler.LoadGameField(sceneConfigProvider.GetSceneConfig());
-        await PlayerHandler.CreatePlayer();
+        await PlayerHandler.CreatePlayer(new SpawnData() { AddressableName = "Player" });
+        await NpcHandler.CreateNpcs(new List<SpawnData>()
+        {
+            new SpawnData() { AddressableName = "Npc", Position = Vector3.left * 2 },
+            new SpawnData() { AddressableName = "Npc", Position = Vector3.right * 2 }
+        });
     }
 
     public UniTask Finish()

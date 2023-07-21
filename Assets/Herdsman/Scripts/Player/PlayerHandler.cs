@@ -13,8 +13,6 @@ namespace Player
         //Subscribe to PlayerMediator events
 
         private readonly InputService inputService;
-        
-        private const string playerAddressableName = "Player";
         private PlayerMediator playerMediator;
 
         public PlayerHandler(InputService inputService, GameEntitySpawner<PlayerMediator, PlayerView> spawner) : base(spawner)
@@ -22,9 +20,9 @@ namespace Player
             this.inputService = inputService;
         }
 
-        public async UniTask CreatePlayer()
+        public async UniTask CreatePlayer(SpawnData spawnData)
         {
-            playerMediator = await CreateMediator(new SpawnData() { AddressableName = playerAddressableName });
+            playerMediator = await CreateMediator(spawnData);
             inputService.RegisterPositionReceiver(playerMediator);
         }
 

@@ -25,6 +25,7 @@ namespace Common.GameEntities.Abstract
             {
                 //await Get object from addressables spawnData.name
                 var viewObject = await LoadAsset(spawnData.AddressableName);
+                viewObject.transform.localPosition = Vector3.zero;
                 View.CacheViewObject(viewObject);
             }
 
