@@ -41,7 +41,7 @@ namespace Services.InputSystem
             if (plane.Raycast(ray, out distance))
             {
                Vector3 clickPoint = ray.GetPoint(distance);
-               positionReceiver.SetPosition(clickPoint);
+               positionReceiver.SetPosition(new Vector3(clickPoint.x, 0, clickPoint.z));
             }
          }
       }

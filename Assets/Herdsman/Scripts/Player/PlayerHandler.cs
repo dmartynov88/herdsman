@@ -22,7 +22,7 @@ namespace Player
             this.inputService = inputService;
         }
 
-        public async UniTaskVoid CreatePlayer()
+        public async UniTask CreatePlayer()
         {
             playerMediator = await CreateMediator(new SpawnData() { AddressableName = playerAddressableName });
             inputService.RegisterPositionReceiver(playerMediator);

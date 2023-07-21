@@ -16,10 +16,14 @@ namespace Common.Dependecies.Abstract
 
         public override void SetupContainers()
         {
+            
+            
             coreContainer = AddContainer<InjectionContainer>()
                 .RegisterExtension<EventCallerContainerExtension>()
                 .RegisterExtension<UnityBindingContainerExtension>()
                 .RegisterExtension<BootInitializerContainerExtension>();
+            
+            coreContainer.Bind<IContainerProvider>().To(new ContainerProvider(coreContainer));
 
             foreach (MonoInstaller monoInstaller in monoInstallers)
             {

@@ -8,5 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Herdsman/Scenes/Main.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Herdsman/Scenes/GameField.unity
+    guid: a338ba20634483440adc41982fb61fc3
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 3b758e06769659746a5cb99bb07f8b7a, type: 2}

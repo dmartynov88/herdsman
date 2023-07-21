@@ -6,11 +6,11 @@ namespace Services.Camera
 {
     public class CameraInstaller : MonoInstaller
     {
-        [SerializeField] private CameraService inputServicePrefab;
+        [SerializeField] private CameraService cameraServiceInstance;
         public override void Install(IInjectionContainer container)
         {
-            DontDestroyOnLoad(inputServicePrefab.gameObject);
-            container.Bind<CameraService>().To(inputServicePrefab);
+            DontDestroyOnLoad(cameraServiceInstance.gameObject);
+            container.Bind<CameraService>().To(cameraServiceInstance);
         }
     }
 }

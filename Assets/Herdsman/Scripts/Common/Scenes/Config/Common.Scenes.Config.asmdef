@@ -1,0 +1,4 @@
+{
+	"name": "Common.Scenes.Config",
+	"references":[ "GUID:8ea639b211336ba40ae4f76c6db86e68", "GUID:301f3c797c7343341b5b55ffe253262c" ]
+}

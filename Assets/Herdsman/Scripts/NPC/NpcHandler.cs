@@ -9,6 +9,8 @@ namespace NPC
         //Main NPC game logic
         //Subscribe to NpcMediator events
         
+        //IFieldPointsProvider??
+        
         public NpcHandler(GameEntitySpawner<NpcMediator, NpcView> spawner) : base(spawner)
         {
         }

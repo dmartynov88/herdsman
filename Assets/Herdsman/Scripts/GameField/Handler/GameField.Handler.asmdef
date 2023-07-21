@@ -1,0 +1,4 @@
+{
+	"name": "GameField.Handler",
+	"references":[ "GUID:f51ebe6a0ceec4240a699833d6309b23", "GUID:301f3c797c7343341b5b55ffe253262c" ]
+}

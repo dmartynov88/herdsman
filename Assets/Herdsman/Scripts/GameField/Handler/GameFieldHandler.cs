@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Common.Scenes.Models;
+using Cysharp.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
-public class GameFieldHandler : MonoBehaviour
+public class GameFieldHandler
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //load scene from addressables
+    //change weather, control day/night, armageddon mode ;)
 
-    // Update is called once per frame
-    void Update()
+    public async UniTask LoadGameField(SceneConfig sceneConfig)
     {
-        
+        //ToDo load scene from addressables
+        await SceneManager.LoadSceneAsync(sceneConfig.SceneName, LoadSceneMode.Additive);
     }
 }
