@@ -1,22 +1,22 @@
 using System.Collections.Generic;
 using Adic;
-using AI;
+using NPC.AI;
 using Common.GameEntities.Handler;
 using Common.GameEntities.Models;
 using Common.GameEntities.Spawner;
 using Cysharp.Threading.Tasks;
-using NPC.Entity;
+using NPC.SinglePlayer.Entity;
 
 namespace NPC.SinglePlayer
 {
-    public class NpcSingleHandler : GameEntityHandlerBase<NpcMediator, NpcView>
+    public class NpcSingleHandler : GameEntityHandlerBase<NpcSingleMediator, NpcSingleView>
     {
-        [Inject] private AiSystem AiSystem { get; set; }
-        private readonly List<NpcMediator> mediators = new();
 
+        private readonly List<NpcSingleMediator> mediators = new();
         
-        public NpcSingleHandler(GameEntitySpawner<NpcMediator, NpcView> spawner) : base(spawner)
+        public NpcSingleHandler(GameEntitySpawner<NpcSingleMediator, NpcSingleView> spawner) : base(spawner)
         {
+            
         }
         
         
@@ -37,7 +37,6 @@ namespace NPC.SinglePlayer
             foreach (var mediator in mediators)
             {
                 UnsubscribeFromMediatorEvents(mediator);
-                AiSystem.ClearMediators();
                 DestroyMediator(mediator);
             }
             mediators.Clear();
@@ -46,18 +45,17 @@ namespace NPC.SinglePlayer
         private async UniTask CreateNpc(SpawnData spawnData)
         {
             var mediator = await CreateMediator(0, spawnData);
-            AiSystem.RegisterMediator(mediator);
             SubscribeToMediatorEvents(mediator);
             
             mediators.Add(mediator);
         }
         
-        private void SubscribeToMediatorEvents(NpcMediator mediator)
+        private void SubscribeToMediatorEvents(NpcSingleMediator mediator)
         {
             //ToDo subscribe to events
         }
         
-        private void UnsubscribeFromMediatorEvents(NpcMediator mediator)
+        private void UnsubscribeFromMediatorEvents(NpcSingleMediator mediator)
         {
             //ToDo Unsubscribe from events
         }

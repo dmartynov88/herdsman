@@ -2,7 +2,7 @@
 using Common.Dependecies.Abstract;
 using Common.GameEntities.Abstract;
 using Common.GameEntities.Spawner;
-using Player.Entity;
+using Player.SinglePlayer.Entity;
 using UnityEngine;
 
 namespace Player.SinglePlayer
@@ -15,9 +15,9 @@ namespace Player.SinglePlayer
         public override void Install(IInjectionContainer container)
         {
             var pool = Instantiate(poolPrefab);
-            var factory = new GameEntityMediatorFactory<PlayerMediator, PlayerView>();
-            var spawner = new GameEntitySpawner<PlayerMediator, PlayerView>(pool, factory);
-            container.Bind<GameEntitySpawner<PlayerMediator, PlayerView>>().To(spawner);
+            var factory = new PlayerMediatorSingleFactory();
+            var spawner = new GameEntitySpawner<PlayerSingleMediator, PlayerSingleView>(pool, factory);
+            container.Bind<GameEntitySpawner<PlayerSingleMediator, PlayerSingleView>>().To(spawner);
             container.Bind<PlayerSingleHandler>().ToSingleton();
         }
     }

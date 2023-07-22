@@ -4,7 +4,7 @@ using GameEntities.Movement;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace AI
+namespace NPC.AI
 {
     //Simple realization
     public class AiMovementHanlder : IDisposable

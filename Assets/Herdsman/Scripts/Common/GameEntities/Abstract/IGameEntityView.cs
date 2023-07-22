@@ -8,6 +8,7 @@ namespace Common.GameEntities.Abstract
         Transform Transform { get; }
         public bool HasGraphics { get; }
         void CacheViewObject(GameObject viewObject);
+        void InitializeView();
         void ResetView();
     }
 
@@ -27,12 +28,11 @@ namespace Common.GameEntities.Abstract
         public void CacheViewObject(GameObject viewObject)
         {
             this.viewObject = viewObject;
-            InitializeView();
             HasGraphics = true;
         }
         
         //Subscribe and cache to view components
-        protected virtual void InitializeView()
+        public virtual void InitializeView()
         {
             
         }

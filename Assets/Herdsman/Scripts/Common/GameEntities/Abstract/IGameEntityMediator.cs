@@ -14,7 +14,7 @@ namespace Common.GameEntities.Abstract
     public interface IGameEntityMediator<TView> : IGameEntityMediator
         where TView : IGameEntityView
     {
-        UniTask Initialize(uint entityId, TView view, SpawnData spawnData);
+        //UniTask Initialize(uint entityId, TView view, SpawnData spawnData);
         void Destroy(out TView view);
     }
 
@@ -24,17 +24,15 @@ namespace Common.GameEntities.Abstract
         public uint EntityId { get; private set; }
         protected TView View { get; private set; }
 
-        public async UniTask Initialize(uint entityId, TView view, SpawnData spawnData)
+        protected virtual async UniTask Initialize(uint entityId, TView view, SpawnData spawnData)
         {
             View = view;
-            if (!View.HasGraphics)
-            {
-                EntityId = entityId;
-                var viewObject = await LoadAsset(spawnData.AddressableName);
-                viewObject.transform.localPosition = Vector3.zero;
-                View.CacheViewObject(viewObject);
-            }
+            EntityId = entityId;
 
+#if !AUTHORITY_SERVER
+            await LoadAsset(spawnData.AddressableName);
+#endif
+            View.InitializeView();
             OnViewReady();
         }
 
@@ -43,20 +41,26 @@ namespace Common.GameEntities.Abstract
             OnDestroy();
             view = View;
         }
-        
-        protected async UniTask<GameObject> LoadAsset(string assetId)
-        {
-            if (string.IsNullOrEmpty(assetId))
-            {
-                throw new ArgumentNullException();
-            }
-            return await Addressables.InstantiateAsync(assetId, Vector3.zero, Quaternion.identity, View.Transform).Task;
-        }
 
         //Subscribe to view events
         protected abstract void OnViewReady();
 
         //Unsubscribe from view events
         protected abstract void OnDestroy();
+        
+        private async UniTask LoadAsset(string addressableName)
+        {
+            if (!View.HasGraphics)
+            {
+                if (string.IsNullOrEmpty(addressableName))
+                {
+                    throw new ArgumentNullException();
+                }
+
+                var viewObject = await Addressables.InstantiateAsync(addressableName, Vector3.zero, Quaternion.identity, View.Transform).Task;
+                viewObject.transform.localPosition = Vector3.zero;
+                View.CacheViewObject(viewObject);
+            }
+        }
     }
 }

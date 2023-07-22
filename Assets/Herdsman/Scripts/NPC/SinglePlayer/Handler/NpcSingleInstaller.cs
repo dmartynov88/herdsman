@@ -2,7 +2,8 @@
 using Common.Dependecies.Abstract;
 using Common.GameEntities.Abstract;
 using Common.GameEntities.Spawner;
-using NPC.Entity;
+using NPC.AI;
+using NPC.SinglePlayer.Entity;
 using UnityEngine;
 
 namespace NPC.SinglePlayer
@@ -11,12 +12,14 @@ namespace NPC.SinglePlayer
     public class NpcSingleInstaller : ScriptableObjectInstaller
     {
         [SerializeField] private NpcViewPool poolPrefab;
+        [SerializeField] private AiConfigSo aiConfigSo;
         
         public override void Install(IInjectionContainer container)
         {
             var pool = Instantiate(poolPrefab);
-            var factory = new GameEntityMediatorFactory<NpcMediator, NpcView>();
-            var spawner = new GameEntitySpawner<NpcMediator, NpcView>(pool, factory);
+            var factory = new NpcMediatorSingleFactory(aiConfigSo);
+            var spawner = new GameEntitySpawner<NpcSingleMediator, NpcSingleView>(pool, factory);
+
             var handler = new NpcSingleHandler(spawner);
             container.Bind<NpcSingleHandler>().To(handler);
         }

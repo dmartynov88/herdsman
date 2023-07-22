@@ -451,7 +451,6 @@ MonoBehaviour:
   soInstallers:
   - {fileID: 11400000, guid: b12a2ed4e1768054aa73edde9606a6e9, type: 2}
   - {fileID: 11400000, guid: f5232cf0040153e42a1d429f07aee778, type: 2}
-  - {fileID: 11400000, guid: 4744fbd12e736a64d9ad16d6da3bfaba, type: 2}
   - {fileID: 11400000, guid: 1068b00a5f4e91c43a39df7df2fb5804, type: 2}
   - {fileID: 11400000, guid: df3252a3add23ee4897d33cf8a12e2e1, type: 2}
 --- !u!4 &2130486099

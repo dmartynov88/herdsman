@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: NpcSingleInstaller
   m_EditorClassIdentifier: 
   poolPrefab: {fileID: 1993631428592461342, guid: c71b104f5eb3cda48bb4c5f1fbb77a50, type: 3}
+  aiConfigSo: {fileID: 11400000, guid: d4f9c68e17a402644b6bcedf16aaa3c9, type: 2}

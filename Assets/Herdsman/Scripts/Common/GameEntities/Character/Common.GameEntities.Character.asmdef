@@ -1,4 +1,4 @@
 {
 	"name": "Common.GameEntities.Character",
-	"references":[ "GUID:51544660a5f578b478b37a58357ead15", "GUID:79fabb7bdb1e65440a756806057bf8e7" ]
+	"references":[ "GUID:51544660a5f578b478b37a58357ead15", "GUID:79fabb7bdb1e65440a756806057bf8e7", "GUID:f51ebe6a0ceec4240a699833d6309b23", "GUID:851ecfda604e3594ab4df9fabdca2e7b" ]
 }

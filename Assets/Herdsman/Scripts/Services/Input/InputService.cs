@@ -9,7 +9,7 @@ namespace Services.InputSystem
    public class InputService : MonoBehaviour
    {
       [Inject] [field: SerializeField] private CameraService CameraService { get; set; }
-      private IMovementController movementController;
+      private ITargetPointReceiver targetPointReceiver;
       private Plane plane;
       
       private void Awake()
@@ -17,22 +17,19 @@ namespace Services.InputSystem
          plane = new Plane(Vector3.up, Vector3.zero);
       }
       
-      public void RegisterMovementController(IMovementController positionReceiver)
+      public void RegisterMovementController(ITargetPointReceiver targetPointReceiver)
       {
-         if (this.movementController != positionReceiver)
-         {
-            this.movementController = positionReceiver;
-         }
+         this.targetPointReceiver = targetPointReceiver;
       }
 
       public void ClearPositionReceiver()
       {
-         this.movementController = null;
+         this.targetPointReceiver = null;
       }
       
       private void Update()
       {
-         if (movementController != null && Input.GetMouseButtonDown(0))
+         if (targetPointReceiver != null && Input.GetMouseButtonDown(0))
          {
             Ray ray = CameraService.MainCamera.ScreenPointToRay(Input.mousePosition);
             float distance;
@@ -40,7 +37,7 @@ namespace Services.InputSystem
             if (plane.Raycast(ray, out distance))
             {
                Vector3 clickPoint = ray.GetPoint(distance);
-               movementController.MoveTo(new Vector3(clickPoint.x, 0, clickPoint.z));
+               targetPointReceiver.SetTargetPoint(new Vector3(clickPoint.x, 0, clickPoint.z));
             }
          }
       }

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AI
+namespace NPC.AI
 {
     [Serializable]
     public class AiMovementData

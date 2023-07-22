@@ -1,5 +1,5 @@
 {
-    "name": "Player.Entity",
+    "name": "Player.SinglePlayer.Entity",
     "rootNamespace": "",
     "references": [
         "GUID:51544660a5f578b478b37a58357ead15",

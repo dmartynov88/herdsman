@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace AI
+namespace NPC.AI
 {
     [CreateAssetMenu(fileName = "AiConfigSo", menuName = "Configs/AiConfigSo")]
     public class AiConfigSo : ScriptableObject, IAiMovementDataProvider

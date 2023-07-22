@@ -35,8 +35,11 @@ namespace Components.Movement
 
         public override void Stop()
         {
-            agent.ResetPath();
-            agent.isStopped = true;
+            if (agent != null)
+            {
+                agent.ResetPath();
+                agent.isStopped = true;
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace AI
+﻿namespace NPC.AI
 {
     public interface IAiMovementDataProvider
     {
