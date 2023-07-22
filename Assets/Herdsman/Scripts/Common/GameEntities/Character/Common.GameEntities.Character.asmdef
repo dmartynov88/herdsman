@@ -1,0 +1,4 @@
+{
+	"name": "Common.GameEntities.Character",
+	"references":[ "GUID:51544660a5f578b478b37a58357ead15", "GUID:79fabb7bdb1e65440a756806057bf8e7" ]
+}

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0266dc5779d200d4484bef3bc636fd53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <MovementController>k__BackingField: {fileID: -2781670460612485206}
 --- !u!114 &-2781670460612485206
 MonoBehaviour:
   m_ObjectHideFlags: 0
