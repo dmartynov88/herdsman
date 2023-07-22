@@ -8,6 +8,8 @@ namespace NPC.AI
     {
         public Vector3 RandomMovementPosition;
         public float MovementSpeed;
+        public float FollowSpeed;
         public float StoppingDistance;
+        public float FollowDistance;
     }
 }

@@ -1,61 +1,78 @@
 ﻿using System;
+using System.Collections.Generic;
 using Common.Utils;
 using GameEntities.Movement;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace NPC.AI
 {
     //Simple realization
     public class AiMovementHanlder : IDisposable
     {
-        private readonly IMovementController movementController;
-        
-        //Simple realization of cache start point
-        //Rewrite if want to use network player's mediators after connection broken
-        private readonly AiMovementData aiMovementData;
-        private readonly Vector3 startPoint;
-        private Vector3 targetPoint;
+        private readonly AiModel aiModel;
+        private readonly Dictionary<NpcStateType, NpcStateBase> behaviourStates;
+        private Action updateAction;
+        private NpcStateBase currentState;
 
         public AiMovementHanlder(IMovementController movementController,  AiMovementData aiMovementData)
         {
-            this.movementController = movementController;
-            this.aiMovementData = aiMovementData;
-            startPoint = movementController.Transform.localPosition;
-            
-            movementController.SetSpeed(aiMovementData.MovementSpeed);
-            
-            targetPoint = GenerateTargetPoint();
-            movementController.MoveTo(targetPoint);
-            CustomGameLoop.OnEarlyUpdate += EarlyUpdate;
+            aiModel = new AiModel(movementController, aiMovementData);
+            aiModel.OnStateChanged += OnStateChanged;
+            behaviourStates = new()
+            {
+                { NpcStateType.Patrol , new NpcPatrol(aiModel)},
+                { NpcStateType.Follow , new NpcFollow(aiModel)}
+            };
+        }
+
+        public void SetActive(bool isActive)
+        {
+            if (isActive)
+            {
+                CustomGameLoop.OnEarlyUpdate += OnUpdate;
+                aiModel.StateType = NpcStateType.Patrol;
+            }
+            else
+            {
+                CustomGameLoop.OnEarlyUpdate -= OnUpdate;
+                aiModel.StateType = NpcStateType.Idle;
+            }
+        }
+
+        public void SetTransformToFollow(Transform transform)
+        {
+            aiModel.TransformToFollow = transform;
+            aiModel.StateType = NpcStateType.Follow;
         }
 
         public void Dispose()
         {
-            CustomGameLoop.OnEarlyUpdate -= EarlyUpdate;
-            movementController.Stop();
+            SetActive(false);
         }
 
-        private void EarlyUpdate()
+        private void OnStateChanged()
         {
-            if (movementController.Transform != null)
+            if (currentState != null)
             {
-                //ToDo optimize or rewrite logic to precached path if needed
-                if ((targetPoint - movementController.Transform.localPosition).magnitude <
-                    aiMovementData.StoppingDistance)
-                {
-                    targetPoint = GenerateTargetPoint();
-                    movementController.MoveTo(targetPoint);
-                }
+                currentState.Stop();
+            }
+
+            updateAction = null;
+            currentState = null;
+            
+            aiModel.MovementController.SetSpeed(0);
+            aiModel.MovementController.Stop();
+            
+            if (behaviourStates.TryGetValue(aiModel.StateType, out currentState))
+            {
+                currentState.Start();
+                updateAction = currentState.Update;
             }
         }
 
-        private Vector3 GenerateTargetPoint()
+        private void OnUpdate()
         {
-            return new Vector3(
-                startPoint.x + (RandomValueFrom0To1Generator.Get() * aiMovementData.RandomMovementPosition.x),
-                startPoint.y,
-                startPoint.z + (RandomValueFrom0To1Generator.Get() * aiMovementData.RandomMovementPosition.z));
+            updateAction?.Invoke();
         }
     }
 }

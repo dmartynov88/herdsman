@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
-public class TriggerReceiver : MonoBehaviour
+namespace Herdsman.Scripts.Components.Collision
 {
-    // Start is called before the first frame update
-    void Start()
+    public class TriggerReceiver : MonoBehaviour, ITriggerReceiver
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public event Action<ITriggerDetector> Triggered;
+       
+        public void OnCollision(ITriggerDetector triggeredView)
+        {
+            Triggered?.Invoke(triggeredView);
+        }
     }
 }

@@ -1,4 +1,4 @@
 {
 	"name": "GameEntities.Components",
-	"references":[ "GUID:79fabb7bdb1e65440a756806057bf8e7" ]
+	"references":[ "GUID:79fabb7bdb1e65440a756806057bf8e7", "GUID:51544660a5f578b478b37a58357ead15" ]
 }

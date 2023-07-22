@@ -1,8 +1,8 @@
 using Common.GameEntities.Abstract;
-using Common.GameEntities.Character;
 using Common.GameEntities.Models;
 using Cysharp.Threading.Tasks;
 using NPC.AI;
+using UnityEngine;
 
 namespace NPC.SinglePlayer.Entity
 {
@@ -21,10 +21,21 @@ namespace NPC.SinglePlayer.Entity
         protected override void OnViewReady()
         {
             aiMovementHanlder = new AiMovementHanlder(View, aiMovementData);
+            View.InteractableTriggered += OnInteractableTriggered;
+            aiMovementHanlder.SetActive(true);
+        }
+
+        private void OnInteractableTriggered(ITriggerDetector triggerDetector)
+        {
+            if (triggerDetector is PlayerTrigger)
+            {
+                aiMovementHanlder.SetTransformToFollow(triggerDetector.Transform);
+            }
         }
 
         protected override void OnDestroy()
         {
+            View.InteractableTriggered -= OnInteractableTriggered;
             aiMovementHanlder?.Dispose();
         }
     }

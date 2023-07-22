@@ -38,9 +38,6 @@ namespace Common.GameEntities.Abstract
         }
 
         //Unsubscribe from view components
-        public virtual void ResetView()
-        {
-            
-        }
+        public abstract void ResetView();
     }
 }

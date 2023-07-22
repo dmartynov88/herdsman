@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Common.GameEntities.Character
 {
-    public class CharacterView : GameEntityViewBase, IMovementController
+    public abstract class CharacterView : GameEntityViewBase, IMovementController
     {
         //Overrides IMovementController to set visual effects if needed
         [field: SerializeField] private MovementControllerBase MovementController { get; set; }
@@ -12,7 +12,6 @@ namespace Common.GameEntities.Character
         public override void ResetView()
         {
             MovementController.Stop();
-            base.ResetView();
         }
 
         public void SetSpeed(float speed)
