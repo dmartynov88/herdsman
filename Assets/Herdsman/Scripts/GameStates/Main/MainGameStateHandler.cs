@@ -3,17 +3,20 @@ using Common.States.Abstract;
 using Cysharp.Threading.Tasks;
 using GameStates.Abstract;
 
-public class MainGameStateHandler : IGameStateHandler
+namespace GameStates.Main
 {
-    [Inject] private IGameStatesService GameStatesService { get; set; }
-
-    public void Start()
+    public class MainGameStateHandler : IGameStateHandler
     {
-        GameStatesService.SwitchState((int)GameStateType.Game);
-    }
+        [Inject] private IGameStatesService GameStatesService { get; set; }
 
-    public UniTask Finish()
-    {
-        return UniTask.CompletedTask;
+        public void Start()
+        {
+            GameStatesService.SwitchState((int)GameStateType.Game);
+        }
+
+        public UniTask Finish()
+        {
+            return UniTask.CompletedTask;
+        }
     }
 }

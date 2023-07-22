@@ -9,21 +9,23 @@ namespace Common.GameEntities.Abstract
     public interface IGameEntityMediator<TView>
         where TView : IGameEntityView
     {
-        UniTask Initialize(TView view, SpawnData spawnData);
+        uint EntityId { get; }
+        UniTask Initialize(uint entityId, TView view, SpawnData spawnData);
         void Destroy(out TView view);
     }
 
     public abstract class GameEntityMediatorBase<TView> : IGameEntityMediator<TView>
         where TView : IGameEntityView
     {
+        public uint EntityId { get; private set; }
         protected TView View { get; private set; }
 
-        public async UniTask Initialize(TView view, SpawnData spawnData)
+        public async UniTask Initialize(uint entityId, TView view, SpawnData spawnData)
         {
             View = view;
             if (!View.HasGraphics)
             {
-                //await Get object from addressables spawnData.name
+                EntityId = entityId;
                 var viewObject = await LoadAsset(spawnData.AddressableName);
                 viewObject.transform.localPosition = Vector3.zero;
                 View.CacheViewObject(viewObject);

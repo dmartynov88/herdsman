@@ -1,4 +1,3 @@
-using System;
 using Adic;
 using GameEntities.Movement;
 using Services.Camera;
@@ -10,7 +9,7 @@ namespace Services.InputSystem
    public class InputService : MonoBehaviour
    {
       [Inject] [field: SerializeField] private CameraService CameraService { get; set; }
-      private IPositionReceiver positionReceiver;
+      private IMovementController movementController;
       private Plane plane;
       
       private void Awake()
@@ -18,22 +17,22 @@ namespace Services.InputSystem
          plane = new Plane(Vector3.up, Vector3.zero);
       }
       
-      public void RegisterPositionReceiver(IPositionReceiver positionReceiver)
+      public void RegisterMovementController(IMovementController positionReceiver)
       {
-         if (this.positionReceiver != positionReceiver)
+         if (this.movementController != positionReceiver)
          {
-            this.positionReceiver = positionReceiver;
+            this.movementController = positionReceiver;
          }
       }
 
       public void ClearPositionReceiver()
       {
-         this.positionReceiver = null;
+         this.movementController = null;
       }
       
       private void Update()
       {
-         if (positionReceiver != null && Input.GetMouseButtonDown(0))
+         if (movementController != null && Input.GetMouseButtonDown(0))
          {
             Ray ray = CameraService.MainCamera.ScreenPointToRay(Input.mousePosition);
             float distance;
@@ -41,7 +40,7 @@ namespace Services.InputSystem
             if (plane.Raycast(ray, out distance))
             {
                Vector3 clickPoint = ray.GetPoint(distance);
-               positionReceiver.SetPosition(new Vector3(clickPoint.x, 0, clickPoint.z));
+               movementController.SetPosition(new Vector3(clickPoint.x, 0, clickPoint.z));
             }
          }
       }

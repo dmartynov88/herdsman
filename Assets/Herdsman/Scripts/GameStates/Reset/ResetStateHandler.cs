@@ -1,15 +1,18 @@
 using Common.States.Abstract;
 using Cysharp.Threading.Tasks;
 
-public class ResetStateHandler : IGameStateHandler
+namespace GameStates.Reset
 {
-    public void Start()
+    public class ResetStateHandler : IGameStateHandler
     {
-        
-    }
+        public void Start()
+        {
 
-    public UniTask Finish()
-    {
-        return UniTask.CompletedTask;
+        }
+
+        public UniTask Finish()
+        {
+            return UniTask.CompletedTask;
+        }
     }
 }

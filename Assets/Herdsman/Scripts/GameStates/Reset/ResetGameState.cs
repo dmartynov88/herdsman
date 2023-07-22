@@ -1,9 +1,11 @@
-﻿using Adic;
-using Common.States.Abstract;
+﻿using Common.States.Abstract;
 
-public sealed class ResetGameState : GameStateBase<ResetStateHandler>
+namespace GameStates.Reset
 {
-    public ResetGameState(ResetStateHandler stateHandler) : base(stateHandler)
+    public sealed class ResetGameState : GameStateBase<ResetStateHandler>
     {
+        public ResetGameState(ResetStateHandler stateHandler) : base(stateHandler)
+        {
+        }
     }
 }

@@ -1,11 +1,12 @@
-﻿using Adic;
-using Common.States.Abstract;
-using UnityEngine;
+﻿using Common.States.Abstract;
 
-public sealed class MainGameState : GameStateBase<MainGameStateHandler>
+namespace GameStates.Main
 {
-    public MainGameState(MainGameStateHandler stateHandler) : base(stateHandler)
+    public sealed class MainGameState : GameStateBase<MainGameStateHandler>
     {
-        
+        public MainGameState(MainGameStateHandler stateHandler) : base(stateHandler)
+        {
+
+        }
     }
 }

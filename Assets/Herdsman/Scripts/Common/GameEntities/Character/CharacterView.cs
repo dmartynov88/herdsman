@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Common.GameEntities.Character
 {
-    public class CharacterView : GameEntityViewBase, IPositionReceiver
+    public class CharacterView : GameEntityViewBase, IMovementController
     {
         [field: SerializeField] private MovementControllerBase MovementController { get; set; }
 
@@ -17,6 +17,16 @@ namespace Common.GameEntities.Character
         public void SetPosition(Vector3 position)
         {
             MovementController.MoveTo(position);
+        }
+
+        public void MoveTo(Vector3 target)
+        {
+            
+        }
+
+        public void Stop()
+        {
+            
         }
     }
 }

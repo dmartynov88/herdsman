@@ -4,10 +4,10 @@ using Common.Scenes.Abstract;
 using Common.Scenes.Config;
 using UnityEngine;
 
-namespace GameStates.Game
+namespace GameStates.SingleGame
 {
-    [CreateAssetMenu(fileName = "GameStateInstaller", menuName = "Installers/GameStateInstaller")]
-    public class GameStateInstaller : ScriptableObjectInstaller
+    [CreateAssetMenu(fileName = "SingleGameStateInstaller", menuName = "Installers/GameStates/SingleGameStateInstaller")]
+    public class SingleGameStateInstaller : ScriptableObjectInstaller
     {
         [SerializeField] private SceneConfigProviderSo sceneConfigProviderSo;
         
@@ -17,8 +17,8 @@ namespace GameStates.Game
             //Use specific inject attributes for inject specific providers for different scenes.
             container.Bind<ISceneConfigProvider>().To(sceneConfigProviderSo);
             container.Bind<GameFieldHandler>().ToSingleton();
-            container.Bind<GameStateHandler>().ToSingleton();
-            container.Bind<GameState>().ToSingleton();
+            container.Bind<SingleGameStateHandler>().ToSingleton();
+            container.Bind<SingleGameState>().ToSingleton();
         }
     }
 }

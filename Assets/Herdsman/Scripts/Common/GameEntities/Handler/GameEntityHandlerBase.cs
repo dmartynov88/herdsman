@@ -16,9 +16,9 @@ namespace Common.GameEntities.Handler
             this.spawner = spawner;
         }
         
-        protected UniTask<TMediator> CreateMediator(SpawnData spawnData)
+        protected UniTask<TMediator> CreateMediator(uint entityId, SpawnData spawnData)
         {
-            return spawner.CreateMediator(spawnData);
+            return spawner.CreateMediator(entityId, spawnData);
         }
 
         protected void DestroyMediator(TMediator mediator)

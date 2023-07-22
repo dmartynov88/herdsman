@@ -22,8 +22,8 @@ namespace Player
 
         public async UniTask CreatePlayer(SpawnData spawnData)
         {
-            playerMediator = await CreateMediator(spawnData);
-            inputService.RegisterPositionReceiver(playerMediator);
+            playerMediator = await CreateMediator(0, spawnData);
+            inputService.RegisterMovementController(playerMediator);
         }
 
         public void DestroyPlayer()

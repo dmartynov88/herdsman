@@ -9,8 +9,6 @@ namespace NPC
 {
     public class NpcHandler : GameEntityHandlerBase<NpcMediator, NpcView>
     {
-        //Fire npc events???
-        
         private readonly List<NpcMediator> mediators = new();
 
         
@@ -43,7 +41,7 @@ namespace NPC
         
         private async UniTask CreateNpc(SpawnData spawnData)
         {
-            var mediator = await CreateMediator(spawnData);
+            var mediator = await CreateMediator(0, spawnData);
             SubscribeToMediatorEvents(mediator);
             
             mediators.Add(mediator);

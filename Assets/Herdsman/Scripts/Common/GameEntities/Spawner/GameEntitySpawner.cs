@@ -20,10 +20,10 @@ namespace Common.GameEntities.Spawner
         }
 
 
-        public UniTask<TMediator> CreateMediator(SpawnData data)
+        public UniTask<TMediator> CreateMediator(uint entityId, SpawnData data)
         {
             TView entityViewContainer = viewPool.Get(data.Position);
-            return mediatorFactory.Create(entityViewContainer, data);
+            return mediatorFactory.Create(entityId, entityViewContainer, data);
         }
 
         public void DestroyMediator(TMediator mediator)

@@ -6,10 +6,11 @@ namespace Components.Movement
 {
     public class NavMeshMovementController : MovementControllerBase
     {
+        public override Transform Transform => transform;
+        
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private Transform transform;
-        
-        
+
         public override void SetPosition(Vector3 position)
         {
             agent.isStopped = true;

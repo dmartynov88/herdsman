@@ -2,9 +2,9 @@
 using Common.Dependecies.Abstract;
 using UnityEngine;
 
-namespace Herdsman.Scripts.GameStates.Reset
+namespace GameStates.Reset
 {
-    [CreateAssetMenu(fileName = "ResetGameStateInstaller", menuName = "Installers/ResetGameStateInstaller")]
+    [CreateAssetMenu(fileName = "ResetGameStateInstaller", menuName = "Installers/GameStates/ResetGameStateInstaller")]
     public class ResetGameStateInstaller : ScriptableObjectInstaller
     {
         public override void Install(IInjectionContainer container)
