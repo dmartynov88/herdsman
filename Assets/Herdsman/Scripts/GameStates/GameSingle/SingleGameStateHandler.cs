@@ -4,8 +4,8 @@ using Common.GameEntities.Models;
 using Common.Scenes.Abstract;
 using Common.States.Abstract;
 using Cysharp.Threading.Tasks;
-using NPC;
-using Player;
+using NPC.SinglePlayer;
+using Player.SinglePlayer;
 using UnityEngine;
 
 namespace GameStates.SingleGame
@@ -16,8 +16,8 @@ namespace GameStates.SingleGame
         //Use specific inject attributes for inject specific providers for different scenes.
         [Inject] private ISceneConfigProvider sceneConfigProvider;
         [Inject] private GameFieldHandler gameFieldHandler;
-        [Inject] private PlayerHandler PlayerHandler { get; set; }
-        [Inject] private NpcHandler NpcHandler { get; set; }
+        [Inject] private PlayerSingleHandler PlayerSingleHandler { get; set; }
+        [Inject] private NpcSingleHandler Handler { get; set; }
 
 
         //Load Field scene
@@ -35,8 +35,8 @@ namespace GameStates.SingleGame
         private async UniTaskVoid Initialize()
         {
             await gameFieldHandler.LoadGameField(sceneConfigProvider.GetSceneConfig());
-            await PlayerHandler.CreatePlayer(new SpawnData() { AddressableName = "Player" });
-            await NpcHandler.CreateNpcs(new List<SpawnData>()
+            await PlayerSingleHandler.CreatePlayer(new SpawnData() { AddressableName = "Player" });
+            await Handler.CreateNpcs(new List<SpawnData>()
             {
                 new SpawnData() { AddressableName = "Npc", Position = Vector3.left * 2 },
                 new SpawnData() { AddressableName = "Npc", Position = Vector3.right * 2 }
@@ -45,7 +45,7 @@ namespace GameStates.SingleGame
 
         public UniTask Finish()
         {
-            PlayerHandler.DestroyPlayer();
+            PlayerSingleHandler.DestroyPlayer();
             return UniTask.CompletedTask;
         }
     }

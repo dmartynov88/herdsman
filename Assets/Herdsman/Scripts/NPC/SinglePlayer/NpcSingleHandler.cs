@@ -5,14 +5,14 @@ using Common.GameEntities.Spawner;
 using Cysharp.Threading.Tasks;
 using NPC.Entity;
 
-namespace NPC
+namespace NPC.SinglePlayer
 {
-    public class NpcHandler : GameEntityHandlerBase<NpcMediator, NpcView>
+    public class NpcSingleHandler : GameEntityHandlerBase<NpcMediator, NpcView>
     {
         private readonly List<NpcMediator> mediators = new();
 
         
-        public NpcHandler(GameEntitySpawner<NpcMediator, NpcView> spawner) : base(spawner)
+        public NpcSingleHandler(GameEntitySpawner<NpcMediator, NpcView> spawner) : base(spawner)
         {
         }
         

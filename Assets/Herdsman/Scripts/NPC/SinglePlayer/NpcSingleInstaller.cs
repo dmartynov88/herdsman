@@ -5,10 +5,10 @@ using Common.GameEntities.Spawner;
 using NPC.Entity;
 using UnityEngine;
 
-namespace NPC
+namespace NPC.SinglePlayer
 {
-    [CreateAssetMenu(fileName = "NpcInstaller", menuName = "Installers/NpcInstaller")]
-    public class NpcInstaller : ScriptableObjectInstaller
+    [CreateAssetMenu(fileName = "NpcSingleInstaller", menuName = "Installers/SinglePlayer/NpcSingleInstaller")]
+    public class NpcSingleInstaller : ScriptableObjectInstaller
     {
         [SerializeField] private NpcViewPool poolPrefab;
         
@@ -17,8 +17,8 @@ namespace NPC
             var pool = Instantiate(poolPrefab);
             var factory = new GameEntityMediatorFactory<NpcMediator, NpcView>();
             var spawner = new GameEntitySpawner<NpcMediator, NpcView>(pool, factory);
-            var handler = new NpcHandler(spawner);
-            container.Bind<NpcHandler>().To(handler);
+            var handler = new NpcSingleHandler(spawner);
+            container.Bind<NpcSingleHandler>().To(handler);
         }
     }
 }

@@ -5,9 +5,9 @@ using Cysharp.Threading.Tasks;
 using Player.Entity;
 using Services.InputSystem;
 
-namespace Player
+namespace Player.SinglePlayer
 {
-    public class PlayerHandler : GameEntityHandlerBase<PlayerMediator, PlayerView>
+    public class PlayerSingleHandler : GameEntityHandlerBase<PlayerMediator, PlayerView>
     {
         //Main player game logic
         //Subscribe to PlayerMediator events
@@ -15,7 +15,7 @@ namespace Player
         private readonly InputService inputService;
         private PlayerMediator playerMediator;
 
-        public PlayerHandler(InputService inputService, GameEntitySpawner<PlayerMediator, PlayerView> spawner) : base(spawner)
+        public PlayerSingleHandler(InputService inputService, GameEntitySpawner<PlayerMediator, PlayerView> spawner) : base(spawner)
         {
             this.inputService = inputService;
         }

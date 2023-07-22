@@ -5,10 +5,10 @@ using Common.GameEntities.Spawner;
 using Player.Entity;
 using UnityEngine;
 
-namespace Player
+namespace Player.SinglePlayer
 {
-    [CreateAssetMenu(fileName = "PlayerInstaller", menuName = "Installers/PlayerInstaller")]
-    public class PlayerInstaller : ScriptableObjectInstaller
+    [CreateAssetMenu(fileName = "PlayerSingleInstaller", menuName = "Installers/SinglePlayer/PlayerSingleInstaller")]
+    public class PlayerSingleInstaller : ScriptableObjectInstaller
     {
         [SerializeField] private PlayerViewPool poolPrefab;
 
@@ -18,7 +18,7 @@ namespace Player
             var factory = new GameEntityMediatorFactory<PlayerMediator, PlayerView>();
             var spawner = new GameEntitySpawner<PlayerMediator, PlayerView>(pool, factory);
             container.Bind<GameEntitySpawner<PlayerMediator, PlayerView>>().To(spawner);
-            container.Bind<PlayerHandler>().ToSingleton();
+            container.Bind<PlayerSingleHandler>().ToSingleton();
         }
     }
 }
