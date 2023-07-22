@@ -15,6 +15,6 @@ MonoBehaviour:
   <aiMovementData>k__BackingField:
     RandomMovementPosition: {x: 4, y: 0, z: 4}
     MovementSpeed: 1
-    FollowSpeed: 1.5
+    FollowSpeed: 2
     StoppingDistance: 0.6
     FollowDistance: 2

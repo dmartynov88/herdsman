@@ -31,6 +31,10 @@ namespace NPC.SinglePlayer.Entity
             {
                 aiMovementHanlder.SetTransformToFollow(triggerDetector.Transform);
             }
+            else if (triggerDetector is YardTrigger)
+            {
+                aiMovementHanlder.SetActive(false);
+            }
         }
 
         protected override void OnDestroy()
