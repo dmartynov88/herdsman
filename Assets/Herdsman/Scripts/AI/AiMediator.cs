@@ -12,9 +12,9 @@ namespace AI
         private AiMovementHanlder aiMovementHanlder;
         
 
-        public void SetMovementController(IMovementController movemetController)
+        public void SetMovementController(IMovementController movemetController, AiMovementData aiMovementData)
         {
-            aiMovementHanlder = new AiMovementHanlder(movemetController);
+            aiMovementHanlder = new AiMovementHanlder(movemetController, aiMovementData);
         }
 
         public void Dispose()

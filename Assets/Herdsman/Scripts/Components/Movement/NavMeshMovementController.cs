@@ -11,6 +11,11 @@ namespace Components.Movement
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private Transform transform;
 
+        public override void SetSpeed(float speed)
+        {
+            agent.speed = speed;
+        }
+
         public override void SetPosition(Vector3 position)
         {
             agent.isStopped = true;

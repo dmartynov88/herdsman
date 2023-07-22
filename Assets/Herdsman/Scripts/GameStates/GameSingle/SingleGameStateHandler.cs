@@ -4,6 +4,7 @@ using Common.GameEntities.Models;
 using Common.Scenes.Abstract;
 using Common.States.Abstract;
 using Cysharp.Threading.Tasks;
+using NPC.Config;
 using NPC.SinglePlayer;
 using Player.SinglePlayer;
 using UnityEngine;
@@ -17,13 +18,13 @@ namespace GameStates.SingleGame
         [Inject] private ISceneConfigProvider sceneConfigProvider;
         [Inject] private GameFieldHandler gameFieldHandler;
         [Inject] private PlayerSingleHandler PlayerSingleHandler { get; set; }
+        [Inject] private INpcSpawnDataProvider NpcSpawnDataProvider { get; set; }
         [Inject] private NpcSingleHandler NpcSingleHandler { get; set; }
 
-
+        private readonly SpawnData playerSpawnData = new SpawnData() { AddressableName = "Player" };
+        
         //Load Field scene
         //Game UI
-        //Create player
-        //Create NPCs
 
         public void Start()
         {
@@ -35,12 +36,10 @@ namespace GameStates.SingleGame
         private async UniTaskVoid Initialize()
         {
             await gameFieldHandler.LoadGameField(sceneConfigProvider.GetSceneConfig());
-            await PlayerSingleHandler.CreatePlayer(new SpawnData() { AddressableName = "Player" });
-            await NpcSingleHandler.CreateNpcs(new List<SpawnData>()
-            {
-                new SpawnData() { AddressableName = "Npc", Position = Vector3.left * 2 },
-                new SpawnData() { AddressableName = "Npc", Position = Vector3.right * 2 }
-            });
+            await PlayerSingleHandler.CreatePlayer(playerSpawnData);
+            
+            //set from npc start points provider
+            await NpcSingleHandler.CreateNpcs(NpcSpawnDataProvider.GetNpcSpawnData());
         }
 
         public UniTask Finish()

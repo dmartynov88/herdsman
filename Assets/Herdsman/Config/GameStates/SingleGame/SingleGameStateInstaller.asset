@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: SingleGameStateInstaller
   m_EditorClassIdentifier: 
   sceneConfigProviderSo: {fileID: 11400000, guid: 5eec278db7a45d64b8c62402572f3d02, type: 2}
+  npcSpawnDataConfigSo: {fileID: 11400000, guid: 6457598543debcf44b37db53da4bee36, type: 2}

@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7469ebc313684b2daa8bfac9c4170af3, type: 3}
-  m_Name: AiInstaller
+  m_Script: {fileID: 11500000, guid: 5af46b0435844d01998c4b57d7d5cb25, type: 3}
+  m_Name: AiConfigSo
   m_EditorClassIdentifier: 
-  aiConfigSo: {fileID: 11400000, guid: d4f9c68e17a402644b6bcedf16aaa3c9, type: 2}
+  <aiMovementData>k__BackingField:
+    RandomMovementPosition: {x: 4, y: 0, z: 4}
+    MovementSpeed: 1
+    StoppingDistance: 0.6

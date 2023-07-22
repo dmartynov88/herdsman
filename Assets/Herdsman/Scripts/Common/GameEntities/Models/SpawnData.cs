@@ -1,10 +1,12 @@
+using System;
 using UnityEngine;
 
 namespace Common.GameEntities.Models
 {
+    [Serializable]
     public class SpawnData
     {
-        public string AddressableName { get; set; }
-        public Vector3 Position { get; set; }
+        [field:SerializeField] public string AddressableName { get; set; }
+        [field:SerializeField] public Vector3 Position { get; set; }
     }
 }

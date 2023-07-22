@@ -25,6 +25,11 @@ namespace Common.GameEntities.Character
             //Remove custom components from view
         }
 
+        public void SetSpeed(float speed)
+        {
+            View.SetSpeed(speed);
+        }
+
         public void SetPosition(Vector3 position)
         {
             View.SetPosition(position);

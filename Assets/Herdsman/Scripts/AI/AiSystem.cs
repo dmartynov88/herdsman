@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Adic;
 using Common.GameEntities.Abstract;
 using GameEntities.Movement;
 
@@ -7,6 +8,7 @@ namespace AI
 {
     public class AiSystem
     {
+        [Inject] private IAiMovementDataProvider aiMovementDataProvider;
         private readonly List<AiMediator> mediators = new();
 
         public void RegisterMediator(IGameEntityMediator mediator)
@@ -16,7 +18,7 @@ namespace AI
             //check interfaces
             if (mediator is IMovementController movable)
             {
-                aiMediator.SetMovementController(movable);
+                aiMediator.SetMovementController(movable, aiMovementDataProvider.GetMovementData());
             }
             //Add another interfaces to handle using else if
             else
