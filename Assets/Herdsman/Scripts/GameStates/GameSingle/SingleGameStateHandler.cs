@@ -17,7 +17,7 @@ namespace GameStates.SingleGame
         [Inject] private ISceneConfigProvider sceneConfigProvider;
         [Inject] private GameFieldHandler gameFieldHandler;
         [Inject] private PlayerSingleHandler PlayerSingleHandler { get; set; }
-        [Inject] private NpcSingleHandler Handler { get; set; }
+        [Inject] private NpcSingleHandler NpcSingleHandler { get; set; }
 
 
         //Load Field scene
@@ -36,7 +36,7 @@ namespace GameStates.SingleGame
         {
             await gameFieldHandler.LoadGameField(sceneConfigProvider.GetSceneConfig());
             await PlayerSingleHandler.CreatePlayer(new SpawnData() { AddressableName = "Player" });
-            await Handler.CreateNpcs(new List<SpawnData>()
+            await NpcSingleHandler.CreateNpcs(new List<SpawnData>()
             {
                 new SpawnData() { AddressableName = "Npc", Position = Vector3.left * 2 },
                 new SpawnData() { AddressableName = "Npc", Position = Vector3.right * 2 }
@@ -45,8 +45,15 @@ namespace GameStates.SingleGame
 
         public UniTask Finish()
         {
+            NpcSingleHandler.DestroyNpcs();
             PlayerSingleHandler.DestroyPlayer();
             return UniTask.CompletedTask;
+        }
+
+        public void Dispose()
+        {
+            NpcSingleHandler.DestroyNpcs();
+            PlayerSingleHandler.DestroyPlayer();
         }
     }
 }

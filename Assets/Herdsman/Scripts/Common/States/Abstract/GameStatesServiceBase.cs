@@ -37,5 +37,13 @@ namespace Common.States.Abstract
                 throw new ArgumentException($"Can't add state {state.GetType()}");
             }
         }
+
+        public void Dispose()
+        {
+            if (currentState != null)
+            {
+                currentState.Dispose();
+            }
+        }
     }
 }

@@ -14,5 +14,9 @@ namespace GameStates.Reset
         {
             return UniTask.CompletedTask;
         }
+
+        public void Dispose()
+        {
+        }
     }
 }

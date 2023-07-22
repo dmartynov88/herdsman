@@ -21,5 +21,11 @@ namespace Common.States.Abstract
         {
             return stateHandler.Finish();
         }
+
+
+        public void Dispose()
+        {
+            stateHandler.Dispose();
+        }
     }
 }

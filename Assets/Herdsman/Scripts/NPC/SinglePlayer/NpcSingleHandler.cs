@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Adic;
+using AI;
 using Common.GameEntities.Handler;
 using Common.GameEntities.Models;
 using Common.GameEntities.Spawner;
@@ -9,6 +11,7 @@ namespace NPC.SinglePlayer
 {
     public class NpcSingleHandler : GameEntityHandlerBase<NpcMediator, NpcView>
     {
+        [Inject] private AiSystem AiSystem { get; set; }
         private readonly List<NpcMediator> mediators = new();
 
         
@@ -34,6 +37,7 @@ namespace NPC.SinglePlayer
             foreach (var mediator in mediators)
             {
                 UnsubscribeFromMediatorEvents(mediator);
+                AiSystem.ClearMediators();
                 DestroyMediator(mediator);
             }
             mediators.Clear();
@@ -42,6 +46,7 @@ namespace NPC.SinglePlayer
         private async UniTask CreateNpc(SpawnData spawnData)
         {
             var mediator = await CreateMediator(0, spawnData);
+            AiSystem.RegisterMediator(mediator);
             SubscribeToMediatorEvents(mediator);
             
             mediators.Add(mediator);

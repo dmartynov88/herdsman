@@ -6,10 +6,14 @@ using UnityEngine.AddressableAssets;
 
 namespace Common.GameEntities.Abstract
 {
-    public interface IGameEntityMediator<TView>
-        where TView : IGameEntityView
+    public interface IGameEntityMediator
     {
         uint EntityId { get; }
+    }
+
+    public interface IGameEntityMediator<TView> : IGameEntityMediator
+        where TView : IGameEntityView
+    {
         UniTask Initialize(uint entityId, TView view, SpawnData spawnData);
         void Destroy(out TView view);
     }

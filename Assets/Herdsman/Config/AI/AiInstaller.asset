@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99a22e2142bf405a9a5a9cf05a43e0e3, type: 3}
-  m_Name: SingleGameStateInstaller
+  m_Script: {fileID: 11500000, guid: 7469ebc313684b2daa8bfac9c4170af3, type: 3}
+  m_Name: AiInstaller
   m_EditorClassIdentifier: 
-  sceneConfigProviderSo: {fileID: 11400000, guid: 5eec278db7a45d64b8c62402572f3d02, type: 2}
