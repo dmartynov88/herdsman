@@ -1,13 +1,15 @@
+using System;
 using Common.GameEntities.Abstract;
 using Common.GameEntities.Models;
 using Cysharp.Threading.Tasks;
 using NPC.AI;
-using UnityEngine;
 
 namespace NPC.SinglePlayer.Entity
 {
     public class NpcSingleMediator : GameEntityMediatorBase<NpcSingleView>
     {
+        public event Action ReachedYard;
+        
         private AiMovementHanlder aiMovementHanlder;
         private AiMovementData aiMovementData;
 
@@ -34,6 +36,7 @@ namespace NPC.SinglePlayer.Entity
             else if (triggerDetector is YardTrigger)
             {
                 aiMovementHanlder.SetActive(false);
+                ReachedYard?.Invoke();
             }
         }
 

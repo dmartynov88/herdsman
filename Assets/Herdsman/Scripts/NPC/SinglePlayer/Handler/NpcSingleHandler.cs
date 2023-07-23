@@ -1,21 +1,21 @@
 using System.Collections.Generic;
-using Adic;
-using NPC.AI;
 using Common.GameEntities.Handler;
 using Common.GameEntities.Models;
 using Common.GameEntities.Spawner;
 using Cysharp.Threading.Tasks;
 using NPC.SinglePlayer.Entity;
+using Services.Player.Service;
 
 namespace NPC.SinglePlayer
 {
     public class NpcSingleHandler : GameEntityHandlerBase<NpcSingleMediator, NpcSingleView>
     {
         private readonly List<NpcSingleMediator> mediators = new();
+        private readonly PlayerService playerService;
         
-        public NpcSingleHandler(GameEntitySpawner<NpcSingleMediator, NpcSingleView> spawner) : base(spawner)
+        public NpcSingleHandler(PlayerService playerService, GameEntitySpawner<NpcSingleMediator, NpcSingleView> spawner) : base(spawner)
         {
-            
+            this.playerService = playerService;
         }
         
         
@@ -51,12 +51,17 @@ namespace NPC.SinglePlayer
         
         private void SubscribeToMediatorEvents(NpcSingleMediator mediator)
         {
-            //ToDo subscribe to events
+            mediator.ReachedYard += OnReachedYard;
         }
-        
+
         private void UnsubscribeFromMediatorEvents(NpcSingleMediator mediator)
         {
-            //ToDo Unsubscribe from events
+            mediator.ReachedYard -= OnReachedYard;
+        }
+
+        private void OnReachedYard()
+        {
+            playerService.AddScore();
         }
     }
 }

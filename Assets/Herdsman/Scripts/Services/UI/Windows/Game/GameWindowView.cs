@@ -26,6 +26,7 @@ namespace Services.UI.Windows.Game
         {
             if (isActive)
             {
+                OnModelChanged();
                 Model.ModelChanged += OnModelChanged;
             }
             

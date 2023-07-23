@@ -19,9 +19,9 @@ namespace NPC.SinglePlayer
             var pool = Instantiate(poolPrefab);
             var factory = new NpcMediatorSingleFactory(aiConfigSo);
             var spawner = new GameEntitySpawner<NpcSingleMediator, NpcSingleView>(pool, factory);
-
-            var handler = new NpcSingleHandler(spawner);
-            container.Bind<NpcSingleHandler>().To(handler);
+            
+            container.Bind<GameEntitySpawner<NpcSingleMediator, NpcSingleView>>().To(spawner);
+            container.Bind<NpcSingleHandler>().ToSingleton();
         }
     }
 }

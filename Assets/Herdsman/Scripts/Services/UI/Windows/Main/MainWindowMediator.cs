@@ -1,5 +1,4 @@
-﻿using System;
-using Common.Assets.Abstract;
+﻿using Common.Assets.Abstract;
 using Cysharp.Threading.Tasks;
 using Common.UI.Abstract;
 
