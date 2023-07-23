@@ -1,0 +1,4 @@
+{
+	"name": "Services.Player.Abstract",
+	"references":[ "GUID:f67d9b0c578b7aa4dbcee656e4363bce" ]
+}

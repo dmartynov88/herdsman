@@ -12,17 +12,23 @@ namespace Common.UI.Abstract
     where TModel : IWindowModel
     {
         public Transform Transform { get; private set; }
+        protected TModel Model;
 
         private void Awake()
         {
             Transform = transform;
         }
 
-        public abstract UniTask InitializeView(TModel model);
+        public virtual UniTask InitializeView(TModel model)
+        {
+            Model = model;
+            return UniTask.CompletedTask;
+        }
 
         public virtual void SetActive(bool isActive)
         {
             gameObject.SetActive(isActive);
         }
+        
     }
 }

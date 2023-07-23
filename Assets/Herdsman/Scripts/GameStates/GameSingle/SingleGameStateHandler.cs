@@ -3,10 +3,14 @@ using Adic;
 using Common.GameEntities.Models;
 using Common.Scenes.Abstract;
 using Common.States.Abstract;
+using Common.UI.Config;
 using Cysharp.Threading.Tasks;
+using GameStates.Abstract;
 using NPC.Config;
 using NPC.SinglePlayer;
 using Player.SinglePlayer;
+using Services.UI.Service;
+using Services.UI.Windows.Game;
 using UnityEngine;
 
 namespace GameStates.SingleGame
@@ -19,8 +23,12 @@ namespace GameStates.SingleGame
         [Inject] private PlayerSingleHandler PlayerSingleHandler { get; set; }
         [Inject] private INpcSpawnDataProvider NpcSpawnDataProvider { get; set; }
         [Inject] private NpcSingleHandler NpcSingleHandler { get; set; }
+        [Inject] private UiService UiService { get; set; }
+        [Inject] private IGameStatesService GameStatesService { get; set; }
 
-        private readonly SpawnData playerSpawnData = new SpawnData() { AddressableName = "Player" };
+        private readonly SpawnData playerSpawnData = new () { AddressableName = "Player" };
+        
+        private GameWindowShowParameters uiShowParameters;
         
         //Load Field scene
         //Game UI
@@ -39,19 +47,37 @@ namespace GameStates.SingleGame
             
             //set from npc start points provider
             await NpcSingleHandler.CreateNpcs(NpcSpawnDataProvider.GetNpcSpawnData());
+            
+            //Simple realization
+            uiShowParameters = new GameWindowShowParameters();
+            uiShowParameters.RestartGamePressed = SwitchToReset;
+            
+            await UiService.ShowWindow(WindowType.Game, uiShowParameters);
         }
 
+        private void SwitchToReset()
+        {
+            uiShowParameters.RestartGamePressed = null;
+            uiShowParameters = null;
+            SwitchToResetUniTask().Forget();
+        }
+
+        private async UniTaskVoid SwitchToResetUniTask()
+        {
+            //Simple realization without windows queue and preloader, etc.
+            UiService.HideWindow();
+            GameStatesService.SwitchState((int)GameStateType.Reset);
+        }
+        
         public UniTask Finish()
         {
             NpcSingleHandler.DestroyNpcs();
             PlayerSingleHandler.DestroyPlayer();
-            return UniTask.CompletedTask;
+            return gameFieldHandler.UnloadGameField();
         }
 
         public void Dispose()
         {
-            NpcSingleHandler.DestroyNpcs();
-            PlayerSingleHandler.DestroyPlayer();
         }
     }
 }

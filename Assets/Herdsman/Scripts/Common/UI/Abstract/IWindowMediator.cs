@@ -4,7 +4,6 @@ using Common.Assets.Abstract;
 using Common.UI.Config;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using Object = UnityEngine.Object;
 
 namespace Common.UI.Abstract
@@ -42,8 +41,8 @@ namespace Common.UI.Abstract
         {
             WindowType = config.WindowType;
             Model = new TModel();
-            await InitializeModel();
             await LoadAsset(config.WindowPrefabName, root);
+            await InitializeModel();
             OnViewReady();
         }
         

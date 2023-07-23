@@ -38,15 +38,15 @@ namespace Services.UI.Windows.Main
 
         private void Subscribe()
         {
-            View.StarnGameClicked += OnStarnGameClicked;
+            View.StartGameClicked += OnStartGameClicked;
         }
 
         private void Unsubscribe()
         {
-            View.StarnGameClicked -= OnStarnGameClicked;
+            View.StartGameClicked -= OnStartGameClicked;
         }
 
-        private void OnStarnGameClicked()
+        private void OnStartGameClicked()
         {
             parameters.StartGamePressed?.Invoke();
         }

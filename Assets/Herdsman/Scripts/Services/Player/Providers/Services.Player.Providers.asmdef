@@ -1,0 +1,4 @@
+{
+	"name": "Services.Player.Providers",
+	"references":[ "GUID:36daca1bd3ed4084eaa0e146e3680065", "GUID:f67d9b0c578b7aa4dbcee656e4363bce" ]
+}

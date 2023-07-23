@@ -8,7 +8,7 @@ namespace Services.UI.Windows.Main
 {
     public class MainWindowView : WindowViewBase<MainWindowModel>
     {
-        public event Action StarnGameClicked;
+        public event Action StartGameClicked;
         
         [SerializeField] private Button startGameBnt;
         
@@ -16,12 +16,12 @@ namespace Services.UI.Windows.Main
         {
             //ToDo += -= on set active?
             startGameBnt.onClick.AddListener(OnStarnGameClicked);
-            return UniTask.CompletedTask;
+            return base.InitializeView(model);
         }
 
         private void OnStarnGameClicked()
         {
-            StarnGameClicked?.Invoke();
+            StartGameClicked?.Invoke();
         }
     }
 }

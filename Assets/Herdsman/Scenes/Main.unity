@@ -131,6 +131,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4007929839028927765, guid: 4269d56339c3abb4ca2f82385f5d0639, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007929839028927765, guid: 4269d56339c3abb4ca2f82385f5d0639, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007929839028927765, guid: 4269d56339c3abb4ca2f82385f5d0639, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007929839028927765, guid: 4269d56339c3abb4ca2f82385f5d0639, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007929839028927765, guid: 4269d56339c3abb4ca2f82385f5d0639, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007929839028927765, guid: 4269d56339c3abb4ca2f82385f5d0639, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4367515686505157210, guid: 4269d56339c3abb4ca2f82385f5d0639, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -446,6 +470,7 @@ MonoBehaviour:
   - {fileID: 2130486100}
   - {fileID: 2130486101}
   soInstallers:
+  - {fileID: 11400000, guid: 928c3fc500a9cfe4f82eb246d06bef1b, type: 2}
   - {fileID: 11400000, guid: 7882ac1a414fe6244b51e2c8edcbd629, type: 2}
   - {fileID: 11400000, guid: b12a2ed4e1768054aa73edde9606a6e9, type: 2}
   - {fileID: 11400000, guid: f5232cf0040153e42a1d429f07aee778, type: 2}
