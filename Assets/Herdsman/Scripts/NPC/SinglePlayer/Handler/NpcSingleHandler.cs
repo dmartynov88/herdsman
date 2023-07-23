@@ -11,7 +11,6 @@ namespace NPC.SinglePlayer
 {
     public class NpcSingleHandler : GameEntityHandlerBase<NpcSingleMediator, NpcSingleView>
     {
-
         private readonly List<NpcSingleMediator> mediators = new();
         
         public NpcSingleHandler(GameEntitySpawner<NpcSingleMediator, NpcSingleView> spawner) : base(spawner)

@@ -14,7 +14,11 @@ namespace ervices.UI.Service
         {
             container.Bind<IWindowsConfigDataProvider>().To(uiConfigSo);
             container.Bind<IWindowMediatorFactory>().ToSingleton<WindowMediatorFactory>();
+            
+            //Because of don't use [Inject] attribute to prevent dependency service on container
+            uiServiceInstance.Initialize(container.Resolve<IWindowMediatorFactory>());
             DontDestroyOnLoad(uiServiceInstance.gameObject);
+            
             container.Bind<UiService>().To(uiServiceInstance);
         }
     }

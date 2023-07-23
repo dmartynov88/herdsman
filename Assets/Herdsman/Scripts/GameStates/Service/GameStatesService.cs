@@ -5,7 +5,6 @@ namespace GameStates.Service
 {
     public class GameStatesService : GameStatesServiceBase
     {
-        
         public override void Initialize(IGameStatesProvider statetsProvider)
         {
             var mainStateId = (int)GameStateType.Main;

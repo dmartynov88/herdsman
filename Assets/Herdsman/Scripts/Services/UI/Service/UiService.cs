@@ -9,7 +9,12 @@ namespace ervices.UI.Service
     public class UiService : MonoBehaviour
     {
         [SerializeField] private Transform windowsRoot;
-        [Inject] private IWindowMediatorFactory mediatorFactory;
+        private IWindowMediatorFactory mediatorFactory;
+
+        public void Initialize(IWindowMediatorFactory mediatorFactory)
+        {
+            this.mediatorFactory = mediatorFactory;
+        }
 
         public async UniTask<IWindowMediator> ShowWindow(WindowType windowType)
         {

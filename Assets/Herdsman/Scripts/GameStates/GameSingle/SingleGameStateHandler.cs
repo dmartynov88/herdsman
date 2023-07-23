@@ -14,7 +14,6 @@ namespace GameStates.SingleGame
     public class SingleGameStateHandler : IGameStateHandler
     {
         //One sceneConfigProvider for one handler
-        //Use specific inject attributes for inject specific providers for different scenes.
         [Inject] private ISceneConfigProvider sceneConfigProvider;
         [Inject] private GameFieldHandler gameFieldHandler;
         [Inject] private PlayerSingleHandler PlayerSingleHandler { get; set; }

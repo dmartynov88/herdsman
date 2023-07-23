@@ -8,7 +8,7 @@ namespace Services.InputSystem
 //Simple as possible input handling for single player test only!
    public class InputService : MonoBehaviour
    {
-      [Inject] [field: SerializeField] private CameraService CameraService { get; set; }
+      private CameraService cameraService;
       private ITargetPointReceiver targetPointReceiver;
       private Plane plane;
       
@@ -16,7 +16,12 @@ namespace Services.InputSystem
       {
          plane = new Plane(Vector3.up, Vector3.zero);
       }
-      
+
+      public void Initialize(CameraService cameraService)
+      {
+         this.cameraService = cameraService;
+      }
+
       public void RegisterMovementController(ITargetPointReceiver targetPointReceiver)
       {
          this.targetPointReceiver = targetPointReceiver;
@@ -24,14 +29,14 @@ namespace Services.InputSystem
 
       public void ClearPositionReceiver()
       {
-         this.targetPointReceiver = null;
+         targetPointReceiver = null;
       }
       
       private void Update()
       {
          if (targetPointReceiver != null && Input.GetMouseButtonDown(0))
          {
-            Ray ray = CameraService.MainCamera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = cameraService.MainCamera.ScreenPointToRay(Input.mousePosition);
             float distance;
 
             if (plane.Raycast(ray, out distance))
