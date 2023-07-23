@@ -21,6 +21,7 @@ namespace Services.UI.Service
         {
             var result = await mediatorFactory.CreateMediator(windowType, windowsRoot);
             await result.Show(parameters);
+            currentOpenedWindow = result;
             return result;
         }
 

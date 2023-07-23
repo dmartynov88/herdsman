@@ -22,7 +22,7 @@ namespace Common.UI.Abstract
         UniTask Hide();
     }
 
-    public abstract class WindowMediatorBase<TView, TModel> : IWindowMediator, IAssetContext
+    public abstract class WindowMediatorBase<TView, TModel> : IWindowMediator, IDisposable, IAssetContext
     where TView : WindowViewBase<TModel>
     where TModel : IWindowModel, new()
     {
@@ -37,20 +37,34 @@ namespace Common.UI.Abstract
 
         private readonly IAssetService assetService;
 
+        
         public async UniTask Initialize(UIWindowConfig config, Transform root)
         {
             WindowType = config.WindowType;
             Model = new TModel();
             await InitializeModel();
             await LoadAsset(config.WindowPrefabName, root);
+            OnViewReady();
         }
-
-
+        
+        
         public abstract UniTask Show(IWindowShowParameters parameters = null);
         public abstract UniTask Hide();
-        protected abstract UniTask InitializeModel();
-        protected abstract void OnViewReady();
+        public virtual void Dispose()
+        {
+        }
         
+        //Realize for fill model by load data from specific services
+        protected virtual UniTask InitializeModel()
+        {
+            return UniTask.CompletedTask;
+        }
+
+        //specific initialization after View load and initialized
+        protected virtual void OnViewReady()
+        {
+        }
+
 
         private async UniTask LoadAsset(string addressableName, Transform root)
         {

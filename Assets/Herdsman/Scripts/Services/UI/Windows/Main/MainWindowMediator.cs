@@ -19,9 +19,10 @@ namespace Services.UI.Windows.Main
             {
                 this.parameters = parameters as MainWindowShowParameters;
             }
+            
             View.SetActive(true);
             
-            this.parameters.StartGamePressed?.Invoke();
+            Subscribe();
             
             return UniTask.CompletedTask;
         }
@@ -29,17 +30,25 @@ namespace Services.UI.Windows.Main
         public override UniTask Hide()
         {
             View.SetActive(false);
-            return UniTask.CompletedTask;
-        }
-
-        protected override UniTask InitializeModel()
-        {
-            return UniTask.CompletedTask;
-        }
-
-        protected override void OnViewReady()
-        {
             
+            Unsubscribe();
+            
+            return UniTask.CompletedTask;
+        }
+
+        private void Subscribe()
+        {
+            View.StarnGameClicked += OnStarnGameClicked;
+        }
+
+        private void Unsubscribe()
+        {
+            View.StarnGameClicked -= OnStarnGameClicked;
+        }
+
+        private void OnStarnGameClicked()
+        {
+            parameters.StartGamePressed?.Invoke();
         }
     }
 }

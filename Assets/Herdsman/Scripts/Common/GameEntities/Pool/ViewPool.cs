@@ -51,7 +51,7 @@ namespace Common.GameEntities.Pool
 
         public void ReturnToPool(TView view)
         {
-            if (view != null)
+            if (view != null && view.Transform != null && poolParent != null)
             {
                 view.ResetView();
                 view.Transform.SetParent(poolParent);

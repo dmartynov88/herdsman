@@ -19,15 +19,5 @@ namespace Services.UI.Windows.Game
         {
             return UniTask.CompletedTask;
         }
-
-        protected override UniTask InitializeModel()
-        {
-            return UniTask.CompletedTask;
-        }
-
-        protected override void OnViewReady()
-        {
-            
-        }
     }
 }

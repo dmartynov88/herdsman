@@ -36,7 +36,7 @@ namespace GameStates.Main
         {
             uiShowParameters.StartGamePressed = null;
             uiShowParameters = null;
-            //SwitchToGameUniTask().Forget();
+            SwitchToGameUniTask().Forget();
         }
 
         private async UniTaskVoid SwitchToGameUniTask()
