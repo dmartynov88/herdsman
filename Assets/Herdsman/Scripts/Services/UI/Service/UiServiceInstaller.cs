@@ -1,10 +1,10 @@
 ﻿using Adic.Container;
 using Common.Dependecies.Abstract;
-using Services.UI.Abstract;
-using Services.UI.Service;
+using Common.UI.Abstract;
+using Common.UI.Config;
 using UnityEngine;
 
-namespace ervices.UI.Service
+namespace Services.UI.Service
 {
     public class UiServiceInstaller : MonoInstaller
     {

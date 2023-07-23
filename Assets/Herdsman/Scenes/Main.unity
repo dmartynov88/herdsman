@@ -296,7 +296,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -446,6 +446,7 @@ MonoBehaviour:
   - {fileID: 2130486100}
   - {fileID: 2130486101}
   soInstallers:
+  - {fileID: 11400000, guid: 7882ac1a414fe6244b51e2c8edcbd629, type: 2}
   - {fileID: 11400000, guid: b12a2ed4e1768054aa73edde9606a6e9, type: 2}
   - {fileID: 11400000, guid: f5232cf0040153e42a1d429f07aee778, type: 2}
   - {fileID: 11400000, guid: 1068b00a5f4e91c43a39df7df2fb5804, type: 2}

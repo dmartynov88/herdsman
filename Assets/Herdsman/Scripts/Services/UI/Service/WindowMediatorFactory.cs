@@ -1,7 +1,8 @@
 ﻿using System;
 using Common.Dependecies.Abstract;
 using Cysharp.Threading.Tasks;
-using Services.UI.Abstract;
+using Common.UI.Abstract;
+using Common.UI.Config;
 using Services.UI.Windows.Game;
 using Services.UI.Windows.Main;
 using UnityEngine;

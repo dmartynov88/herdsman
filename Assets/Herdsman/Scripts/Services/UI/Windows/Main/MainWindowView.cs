@@ -1,11 +1,11 @@
 ﻿using Cysharp.Threading.Tasks;
-using Services.UI.Abstract;
+using Common.UI.Abstract;
 
 namespace Services.UI.Windows.Main
 {
-    public class MainWindowView : WindowViewBase
+    public class MainWindowView : WindowViewBase<MainWindowModel>
     {
-        public override UniTask InitializeView()
+        public override UniTask InitializeView(MainWindowModel model)
         {
             return UniTask.CompletedTask;
         }
