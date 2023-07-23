@@ -1,4 +1,4 @@
-﻿namespace Herdsman.Scripts.Services.UI.Abstract
+﻿namespace Services.UI.Abstract
 {
     public enum WindowType
     {

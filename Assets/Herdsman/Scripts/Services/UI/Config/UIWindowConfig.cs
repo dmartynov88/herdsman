@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-namespace Herdsman.Scripts.Services.UI.Abstract
+namespace Services.UI.Abstract
 {
+    [Serializable]
     public class UIWindowConfig
     {
-        [field: SerializeField] public WindowType windowType { get; private set; }
-        [field: SerializeField] public string windowPrefabName { get; private set; }
+        [field: SerializeField] public WindowType WindowType { get; private set; }
+        [field: SerializeField] public string WindowPrefabName { get; private set; }
     }
 }
