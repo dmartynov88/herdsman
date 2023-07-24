@@ -1,11 +1,6 @@
 using Herdsman.Scripts.Components.Collision;
 using UnityEngine;
 
-public interface ITriggerDetector
-{
-    public Transform Transform { get; }
-}
-
 public class PlayerTrigger : MonoBehaviour, ITriggerDetector
 {
     public Transform Transform { get; private set; }

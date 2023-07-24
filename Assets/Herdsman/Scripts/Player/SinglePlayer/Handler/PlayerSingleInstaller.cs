@@ -1,6 +1,5 @@
 ﻿using Adic.Container;
 using Common.Dependecies.Abstract;
-using Common.GameEntities.Abstract;
 using Common.GameEntities.Spawner;
 using Player.SinglePlayer.Entity;
 using UnityEngine;
