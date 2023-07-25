@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Adic;
 using Common.GameEntities.Handler;
 using Common.GameEntities.Models;
 using Common.GameEntities.Spawner;
@@ -14,7 +13,7 @@ namespace Herdsman.Scripts.NPC.LocalMode.CoopHandler
         private readonly List<NpcMediator> mediators = new();
         private readonly CoopPlayerService playerService;
         
-        public NpcCoopHandler(CoopPlayerService playerService, [Inject("NPCCoopSpawner")] GameEntitySpawner<NpcMediator, NpcView> spawner) : base(spawner)
+        public NpcCoopHandler(CoopPlayerService playerService, GameEntitySpawner<NpcMediator, NpcView> spawner) : base(spawner)
         {
             this.playerService = playerService;
         }

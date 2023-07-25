@@ -14,7 +14,7 @@ namespace NPC.SinglePlayer
         private readonly List<NpcMediator> mediators = new();
         private readonly PlayerService playerService;
         
-        public NpcSingleHandler(PlayerService playerService, [Inject("NPCSingleSpawner")]GameEntitySpawner<NpcMediator, NpcView> spawner) : base(spawner)
+        public NpcSingleHandler(PlayerService playerService, GameEntitySpawner<NpcMediator, NpcView> spawner) : base(spawner)
         {
             this.playerService = playerService;
         }

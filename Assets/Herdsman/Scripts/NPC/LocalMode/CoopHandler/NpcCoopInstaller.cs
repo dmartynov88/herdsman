@@ -15,11 +15,11 @@ namespace Herdsman.Scripts.NPC.LocalMode.CoopHandler
         
         public override void Install(IInjectionContainer container)
         {
-            var pool = Instantiate(poolPrefab);
-            var factory = new NpcMediatorSingleFactory(aiConfigSo);
-            var spawner = new GameEntitySpawner<NpcMediator, NpcView>(pool, factory);
-            
-            container.Bind<GameEntitySpawner<NpcMediator, NpcView>>().To(spawner).As("NPCCoopSpawner");
+            // var pool = Instantiate(poolPrefab);
+            // var factory = new NpcMediatorSingleFactory(aiConfigSo);
+            // var spawner = new GameEntitySpawner<NpcMediator, NpcView>(pool, factory);
+
+            //container.Bind<GameEntitySpawner<NpcMediator, NpcView>>().To(spawner);//.As("NPCCoopSpawner");
             container.Bind<NpcCoopHandler>().ToSingleton();
         }
     }
