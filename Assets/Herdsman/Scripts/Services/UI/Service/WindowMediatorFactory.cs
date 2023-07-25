@@ -28,6 +28,7 @@ namespace Services.UI.Service
                 {
                     WindowType.MainMenu => containerProvider.Container.Resolve<MainWindowMediator>(),
                     WindowType.GameSingle => containerProvider.Container.Resolve<GameWindowMediator>(),
+                    WindowType.GameCoop => containerProvider.Container.Resolve<CoopGameWindowMediator>(),
                 };
 
                 await result.Initialize(config, root);

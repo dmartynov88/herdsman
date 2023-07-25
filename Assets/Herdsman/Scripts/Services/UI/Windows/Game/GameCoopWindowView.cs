@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using Common.UI.Abstract;
 using Cysharp.Threading.Tasks;
 using Services.UI.Windows.Game;
@@ -9,7 +10,7 @@ using UnityEngine.UI;
 public class GameCoopWindowView : WindowViewBase<CoopGameWindowModel>
 {
     public event Action RestartGameClicked;
-    private const string score_text = "Player {0}: ";
+    private const string score_text_format = "Player {0}: {1}";
     
     [SerializeField] private TMP_Text player1scoreText;
     [SerializeField] private TMP_Text player2scoreText;
@@ -34,9 +35,10 @@ public class GameCoopWindowView : WindowViewBase<CoopGameWindowModel>
 
     private void OnModelChanged()
     {
-        //ToDo optimize
-        player1scoreText.text = score_text + Model.Player1Score;
-        player2scoreText.text = score_text + Model.Player2Score;
+        StringBuilder sb1 = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder();
+        player1scoreText.text = sb1.AppendFormat(score_text_format, 1, Model.Player1Score).ToString();
+        player2scoreText.text = sb2.AppendFormat(score_text_format, 2, Model.Player2Score).ToString();
     }
 
     private void OnDisable()

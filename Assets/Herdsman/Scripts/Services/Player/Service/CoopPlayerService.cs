@@ -24,5 +24,11 @@ namespace Services.Player.Service
             PlayerDataById[yardId].TotalScore++;
             PlayerDataChanged?.Invoke();
         }
+
+        public void ResetScore()
+        {
+            PlayerDataById[0].TotalScore = 0;
+            PlayerDataById[1].TotalScore = 0;
+        }
     }
 }
