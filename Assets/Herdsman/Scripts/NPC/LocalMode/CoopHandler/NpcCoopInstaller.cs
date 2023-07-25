@@ -20,7 +20,6 @@ namespace Herdsman.Scripts.NPC.LocalMode.CoopHandler
             var spawner = new GameEntitySpawner<NpcMediator, NpcView>(pool, factory);
             
             container.Bind<GameEntitySpawner<NpcMediator, NpcView>>().To(spawner).As("NPCCoopSpawner");
-            Debug.LogError("Install NpcCoopHandler");
             container.Bind<NpcCoopHandler>().ToSingleton();
         }
     }
