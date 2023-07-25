@@ -8,20 +8,28 @@ namespace Services.UI.Windows.Main
 {
     public class MainWindowView : WindowViewBase<MainWindowModel>
     {
-        public event Action StartGameClicked;
+        public event Action StartCoopGameClicked;
+        public event Action StartSingleGameClicked;
         
-        [SerializeField] private Button startGameBnt;
+        [SerializeField] private Button startSingleGameBnt;
+        [SerializeField] private Button startCoopGameBnt;
         
         public override UniTask InitializeView(MainWindowModel model)
         {
             //ToDo += -= on set active?
-            startGameBnt.onClick.AddListener(OnStarnGameClicked);
+            startSingleGameBnt.onClick.AddListener(OnStartSingleGameClicked);
+            startCoopGameBnt.onClick.AddListener(OnStartCoopGameClicked);
             return base.InitializeView(model);
         }
 
-        private void OnStarnGameClicked()
+        private void OnStartSingleGameClicked()
         {
-            StartGameClicked?.Invoke();
+            StartSingleGameClicked?.Invoke();
+        }
+        
+        private void OnStartCoopGameClicked()
+        {
+            StartCoopGameClicked?.Invoke();
         }
     }
 }

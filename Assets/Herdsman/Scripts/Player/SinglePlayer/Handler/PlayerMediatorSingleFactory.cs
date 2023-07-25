@@ -5,12 +5,12 @@ using Player.SinglePlayer.Entity;
 
 namespace Player.SinglePlayer
 {
-    public class PlayerMediatorSingleFactory : IGameEntityMediatorFactory<PlayerSingleMediator, PlayerSingleView> 
+    public class PlayerMediatorSingleFactory : IGameEntityMediatorFactory<PlayerSingleMediator, PlayerView> 
     {
-        public async UniTask<PlayerSingleMediator> Create(uint entityId, PlayerSingleView singleView, SpawnData spawnData)
+        public async UniTask<PlayerSingleMediator> Create(uint entityId, PlayerView view, SpawnData spawnData)
         {
             var mediator = new PlayerSingleMediator();
-            await mediator.Initialize(singleView, spawnData);
+            await mediator.Initialize(view, spawnData);
             return mediator;
         }
     }

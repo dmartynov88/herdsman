@@ -1,0 +1,28 @@
+{
+    "name": "Player.CoopPlayer",
+    "rootNamespace": "",
+    "references": [
+        "GUID:51544660a5f578b478b37a58357ead15",
+        "GUID:d6f4f8d5c4b0cdf43a2c340017aaf091",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:851ecfda604e3594ab4df9fabdca2e7b",
+        "GUID:424c22d715b8fb04b8b8839d11157bc7",
+        "GUID:7abe47e7dc8d9f341b4e73827537a986",
+        "GUID:4eb57ac0e6c4f2e4a82d6e956d0741aa",
+        "GUID:aa760927e46e1894a8f62da3a0a46f6a",
+        "GUID:79fabb7bdb1e65440a756806057bf8e7",
+        "GUID:1edb5c6f7af5bce4982acf4ab144825b",
+        "GUID:4b7723ae46fd5fa4c9e531561493d271",
+        "GUID:e4097f8b01158ec4094fdccae1103eee",
+        "GUID:77500a04394aa534d8702c4f3acbafa7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

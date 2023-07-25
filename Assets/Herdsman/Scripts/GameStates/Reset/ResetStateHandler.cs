@@ -11,7 +11,7 @@ namespace GameStates.Reset
         
         public void Start()
         {
-            GameStatesService.SwitchState((int)GameStateType.Game);
+            GameStatesService.SwitchState((int)GameStateType.Main);
         }
 
         public UniTask Finish()

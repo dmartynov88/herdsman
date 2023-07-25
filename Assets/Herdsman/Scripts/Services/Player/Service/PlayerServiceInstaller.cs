@@ -13,6 +13,7 @@ namespace Services.Player.Service
             //IPlayerDataProvider, IPlayerDataSaver
             var playerPrefsDataProvider = new PlayerPrefsDataProvider();
             container.Bind<PlayerService>().To(new PlayerService(playerPrefsDataProvider, playerPrefsDataProvider));
+            container.Bind<CoopPlayerService>().To(new CoopPlayerService());
         }
     }
    

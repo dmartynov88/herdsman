@@ -32,10 +32,7 @@ namespace Common.GameEntities.Abstract
         }
         
         //Subscribe and cache to view components
-        public virtual void InitializeView()
-        {
-            
-        }
+        public abstract void InitializeView();
 
         //Unsubscribe from view components
         public abstract void ResetView();

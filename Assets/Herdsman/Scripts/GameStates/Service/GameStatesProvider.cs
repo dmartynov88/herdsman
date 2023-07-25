@@ -4,6 +4,7 @@ using GameStates.Abstract;
 using GameStates.Main;
 using GameStates.Reset;
 using GameStates.SingleGame;
+using Herdsman.Scripts.GameStates.GameCoop;
 
 namespace GameStates.Service
 {
@@ -11,12 +12,14 @@ namespace GameStates.Service
     {
         private readonly MainGameState mainGameState;
         private readonly SingleGameState singleGameState;
+        private readonly CoopGameState coopGameState;
         private readonly ResetGameState resetGameState;
 
-        public GameStatesProvider(MainGameState mainGameState, SingleGameState singleGameState, ResetGameState resetGameState)
+        public GameStatesProvider(MainGameState mainGameState, SingleGameState singleGameState, CoopGameState coopGameState, ResetGameState resetGameState)
         {
             this.mainGameState = mainGameState;
             this.singleGameState = singleGameState;
+            this.coopGameState = coopGameState;
             this.resetGameState = resetGameState;
         }
 
@@ -25,7 +28,8 @@ namespace GameStates.Service
             return (GameStateType)gameStateTypeId switch
             {
                 GameStateType.Main => mainGameState,
-                GameStateType.Game => singleGameState,
+                GameStateType.SingleGame => singleGameState,
+                GameStateType.CoopGame => coopGameState,
                 GameStateType.Reset => resetGameState,
                 _ => throw new ArgumentException($"Can't get state by GameStateType {(GameStateType)gameStateTypeId}")
             };

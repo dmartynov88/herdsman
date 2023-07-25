@@ -37,17 +37,24 @@ namespace Services.UI.Windows.Main
 
         private void Subscribe()
         {
-            View.StartGameClicked += OnStartGameClicked;
+            View.StartSingleGameClicked += OnStartSingleGameClicked;
+            View.StartCoopGameClicked += OnStartCoopGameClicked;
         }
 
         private void Unsubscribe()
         {
-            View.StartGameClicked -= OnStartGameClicked;
+            View.StartSingleGameClicked -= OnStartSingleGameClicked;
+            View.StartCoopGameClicked -= OnStartCoopGameClicked;
         }
 
-        private void OnStartGameClicked()
+        private void OnStartSingleGameClicked()
         {
-            parameters.StartGamePressed?.Invoke();
+            parameters.StartSingleGamePressed?.Invoke();
+        }
+        
+        private void OnStartCoopGameClicked()
+        {
+            parameters.StartCoopGamePressed?.Invoke();
         }
     }
 }

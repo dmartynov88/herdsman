@@ -20,8 +20,8 @@ namespace GameStates.SingleGame
             //One sceneConfigProvider for only one handler
             //Use specific inject attributes for inject specific providers for different scenes.
 
-            container.Bind<INpcSpawnDataProvider>().To(npcSpawnDataConfigSo);
-            container.Bind<ISceneConfigProvider>().To(sceneConfigProviderSo);
+            container.Bind<INpcSpawnDataProvider>().To(npcSpawnDataConfigSo).As("SingleSpawnDataProvider");
+            container.Bind<ISceneConfigProvider>().To(sceneConfigProviderSo).As("SingleGameSceneConfigProvider");
             container.Bind<GameFieldHandler>().ToSingleton();
             container.Bind<SingleGameStateHandler>().ToSingleton();
             container.Bind<SingleGameState>().ToSingleton();

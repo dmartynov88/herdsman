@@ -12,6 +12,7 @@ namespace Services.UI.Windows.Game
             //Bind dependencies and create mediator with container for auto resolve on creation
             //Dependencies add to ctor for prevent dependency mediator on container (don't use [Inject] inside mediator)
             container.Bind<GameWindowMediator>().ToSingleton();
+            container.Bind<CoopGameWindowMediator>().ToSingleton();
         }
     }
 }

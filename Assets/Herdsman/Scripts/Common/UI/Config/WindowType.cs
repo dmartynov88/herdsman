@@ -3,6 +3,7 @@
     public enum WindowType
     {
         MainMenu = 0,
-        Game = 1,
+        GameSingle = 1,
+        GameCoop = 2,
     }
 }

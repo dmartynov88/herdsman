@@ -9,6 +9,11 @@ namespace NPC.AI
     //Simple realization
     public class AiMovementHanlder : IDisposable
     {
+        /// <summary>
+        /// For coop mode.
+        /// </summary>
+        public bool HasFollowTarget { get; private set; }
+        
         private readonly AiModel aiModel;
         private readonly Dictionary<NpcStateType, NpcStateBase> behaviourStates;
         private Action updateAction;
@@ -41,6 +46,7 @@ namespace NPC.AI
 
         public void SetTransformToFollow(Transform transform)
         {
+            HasFollowTarget = true;
             aiModel.TransformToFollow = transform;
             aiModel.StateType = NpcStateType.Follow;
         }

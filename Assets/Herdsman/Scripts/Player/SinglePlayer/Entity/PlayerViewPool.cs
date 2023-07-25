@@ -3,7 +3,7 @@ using Player.SinglePlayer.Entity;
 
 namespace Player.SinglePlayer.Entity
 {
-    public class PlayerViewPool : ViewPool<PlayerSingleView>
+    public class PlayerViewPool : ViewPool<PlayerView>
     {
         
     }

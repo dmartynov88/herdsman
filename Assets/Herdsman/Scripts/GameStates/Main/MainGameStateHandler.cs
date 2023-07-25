@@ -26,24 +26,41 @@ namespace GameStates.Main
         private async UniTaskVoid InitState()
         {
             //Simple realization
-            uiShowParameters = new MainWindowShowParameters();
-            uiShowParameters.StartGamePressed = SwitchToGame;
-            
+            uiShowParameters = new MainWindowShowParameters
+            {
+                StartSingleGamePressed = SwitchToSingleGame,
+                StartCoopGamePressed = SwitchToCoopGame
+            };
+
             await UiService.ShowWindow(WindowType.MainMenu, uiShowParameters);
         }
 
-        private void SwitchToGame()
+        private void SwitchToSingleGame()
         {
-            uiShowParameters.StartGamePressed = null;
+            uiShowParameters.StartSingleGamePressed = null;
+            uiShowParameters.StartCoopGamePressed = null;
             uiShowParameters = null;
-            SwitchToGameUniTask().Forget();
+            SwitchToSingleGameUniTask().Forget();
         }
 
-        private async UniTaskVoid SwitchToGameUniTask()
+        private async UniTaskVoid SwitchToSingleGameUniTask()
         {
-            //Simple realization without windows queue and preloader, etc.
-            UiService.HideWindow();
-            GameStatesService.SwitchState((int)GameStateType.Game);
+            await UiService.HideWindow();
+            GameStatesService.SwitchState((int)GameStateType.SingleGame);
+        }
+        
+        private void SwitchToCoopGame()
+        {
+            uiShowParameters.StartSingleGamePressed = null;
+            uiShowParameters.StartCoopGamePressed = null;
+            uiShowParameters = null;
+            SwitchToCoopGameUniTask().Forget();
+        }
+        
+        private async UniTaskVoid SwitchToCoopGameUniTask()
+        {
+            await UiService.HideWindow();
+            GameStatesService.SwitchState((int)GameStateType.CoopGame);
         }
 
         public UniTask Finish()

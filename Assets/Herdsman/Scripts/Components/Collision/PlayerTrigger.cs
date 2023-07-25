@@ -8,6 +8,7 @@ public interface ITriggerDetector
 
 public class PlayerTrigger : MonoBehaviour, ITriggerDetector
 {
+    public Color TriggeredColor { get; private set; }
     public Transform Transform { get; private set; }
 
     private void Awake()
@@ -21,5 +22,18 @@ public class PlayerTrigger : MonoBehaviour, ITriggerDetector
         {
             triggerReceiver.OnCollision(this);
         }
+    }
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent<TriggerReceiver>(out var triggerReceiver))
+        {
+            triggerReceiver.OnExitCollision();
+        }
+    }
+
+    public void SetColor(Color color)
+    {
+        TriggeredColor = color;
     }
 }

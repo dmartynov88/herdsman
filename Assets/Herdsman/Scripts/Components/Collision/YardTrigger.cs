@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class YardTrigger : MonoBehaviour, ITriggerDetector
 {
+    [field: SerializeField] public int YardTriggerId { get; private set; }
+
     public Transform Transform { get; private set; }
 
     private void Awake()

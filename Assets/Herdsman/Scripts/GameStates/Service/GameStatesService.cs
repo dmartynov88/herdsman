@@ -5,16 +5,20 @@ namespace GameStates.Service
 {
     public class GameStatesService : GameStatesServiceBase
     {
-        public override void Initialize(IGameStatesProvider statetsProvider)
+        public override void Initialize(IGameStatesProvider statesProvider)
         {
             var mainStateId = (int)GameStateType.Main;
-            AddState(mainStateId, statetsProvider.GetStateByTypeId(mainStateId));
+            AddState(mainStateId, statesProvider.GetStateByTypeId(mainStateId));
 
-            var gameStateId = (int)GameStateType.Game;
-            AddState(gameStateId, statetsProvider.GetStateByTypeId(gameStateId));
+            var singleGameStateId = (int)GameStateType.SingleGame;
+            AddState(singleGameStateId, statesProvider.GetStateByTypeId(singleGameStateId));
+            
+            var coopGameStateId = (int)GameStateType.CoopGame;
+            AddState(coopGameStateId, statesProvider.GetStateByTypeId(coopGameStateId));
             
             var resetStateId = (int)GameStateType.Reset;
-            AddState(resetStateId, statetsProvider.GetStateByTypeId(resetStateId));
+            AddState(resetStateId, statesProvider.GetStateByTypeId(resetStateId));
+            
         }
     }
 }

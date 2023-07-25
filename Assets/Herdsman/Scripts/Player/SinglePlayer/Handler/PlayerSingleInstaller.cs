@@ -1,6 +1,5 @@
 ﻿using Adic.Container;
 using Common.Dependecies.Abstract;
-using Common.GameEntities.Abstract;
 using Common.GameEntities.Spawner;
 using Player.SinglePlayer.Entity;
 using UnityEngine;
@@ -16,8 +15,8 @@ namespace Player.SinglePlayer
         {
             var pool = Instantiate(poolPrefab);
             var factory = new PlayerMediatorSingleFactory();
-            var spawner = new GameEntitySpawner<PlayerSingleMediator, PlayerSingleView>(pool, factory);
-            container.Bind<GameEntitySpawner<PlayerSingleMediator, PlayerSingleView>>().To(spawner);
+            var spawner = new GameEntitySpawner<PlayerSingleMediator, PlayerView>(pool, factory);
+            container.Bind<GameEntitySpawner<PlayerSingleMediator, PlayerView>>().To(spawner);
             container.Bind<PlayerSingleHandler>().ToSingleton();
         }
     }

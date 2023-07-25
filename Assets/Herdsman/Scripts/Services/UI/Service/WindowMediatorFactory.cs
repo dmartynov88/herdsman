@@ -27,7 +27,7 @@ namespace Services.UI.Service
                 IWindowMediator result = windowType switch
                 {
                     WindowType.MainMenu => containerProvider.Container.Resolve<MainWindowMediator>(),
-                    WindowType.Game => containerProvider.Container.Resolve<GameWindowMediator>(),
+                    WindowType.GameSingle => containerProvider.Container.Resolve<GameWindowMediator>(),
                 };
 
                 await result.Initialize(config, root);

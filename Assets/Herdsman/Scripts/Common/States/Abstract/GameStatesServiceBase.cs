@@ -13,8 +13,10 @@ namespace Common.States.Abstract
         private IGameState currentState;
 
         public abstract void Initialize(IGameStatesProvider statetsProvider);
+        
 
         //ToDo add logic for specific transitions if needed
+
         public async UniTask SwitchState(int gameStateTypeId)
         {
             if (states.TryGetValue(gameStateTypeId, out IGameState nextState))
@@ -23,7 +25,7 @@ namespace Common.States.Abstract
                 {
                     await currentState.Exit();
                 }
-
+                
                 currentState = nextState;
 
                 currentState.Enter();

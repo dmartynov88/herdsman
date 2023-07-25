@@ -17,3 +17,5 @@ MonoBehaviour:
     <WindowPrefabName>k__BackingField: MainMenuWindow
   - <WindowType>k__BackingField: 1
     <WindowPrefabName>k__BackingField: GameWindow
+  - <WindowType>k__BackingField: 2
+    <WindowPrefabName>k__BackingField: GameWindowCoop

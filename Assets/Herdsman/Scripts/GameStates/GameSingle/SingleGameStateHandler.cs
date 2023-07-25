@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Adic;
 using Common.GameEntities.Models;
 using Common.Scenes.Abstract;
@@ -11,17 +10,16 @@ using NPC.SinglePlayer;
 using Player.SinglePlayer;
 using Services.UI.Service;
 using Services.UI.Windows.Game;
-using UnityEngine;
 
 namespace GameStates.SingleGame
 {
     public class SingleGameStateHandler : IGameStateHandler
     {
         //One sceneConfigProvider for one handler
-        [Inject] private ISceneConfigProvider sceneConfigProvider;
+        [Inject("SingleGameSceneConfigProvider")] private ISceneConfigProvider sceneConfigProvider { get; set; }
+        [Inject("SingleSpawnDataProvider")] private INpcSpawnDataProvider NpcSpawnDataProvider { get; set; }
         [Inject] private GameFieldHandler gameFieldHandler;
         [Inject] private PlayerSingleHandler PlayerSingleHandler { get; set; }
-        [Inject] private INpcSpawnDataProvider NpcSpawnDataProvider { get; set; }
         [Inject] private NpcSingleHandler NpcSingleHandler { get; set; }
         [Inject] private UiService UiService { get; set; }
         [Inject] private IGameStatesService GameStatesService { get; set; }
@@ -52,7 +50,7 @@ namespace GameStates.SingleGame
             uiShowParameters = new GameWindowShowParameters();
             uiShowParameters.RestartGamePressed = SwitchToReset;
             
-            await UiService.ShowWindow(WindowType.Game, uiShowParameters);
+            await UiService.ShowWindow(WindowType.GameSingle, uiShowParameters);
         }
 
         private void SwitchToReset()

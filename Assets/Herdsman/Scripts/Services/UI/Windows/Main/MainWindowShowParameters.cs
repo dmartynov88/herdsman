@@ -5,6 +5,7 @@ namespace Services.UI.Windows.Main
 {
     public class MainWindowShowParameters : IWindowShowParameters
     {
-        public Action StartGamePressed;
+        public Action StartSingleGamePressed;
+        public Action StartCoopGamePressed;
     }
 }
