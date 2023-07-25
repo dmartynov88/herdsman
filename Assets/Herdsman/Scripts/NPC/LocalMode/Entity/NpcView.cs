@@ -16,9 +16,8 @@ namespace NPC.LocalMode.Entity
         public override void InitializeView()
         {
             playerTriggerDetector.Triggered += OnTriggered;
-            playerTriggerDetector.ExitTrigger += OnExitTrigger;
             colorChanger = GetComponentInChildren<ColorChanger>();
-            colorChanger.ResetColor();
+            ResetColor();
         }
 
         private void OnTriggered(ITriggerDetector triggerDetector)
@@ -26,20 +25,20 @@ namespace NPC.LocalMode.Entity
             InteractableTriggered?.Invoke(triggerDetector);
         }
 
-        private void OnExitTrigger()
-        {
-            colorChanger.ResetColor();
-        }
-        
         public void SetColor(Color color)
         {
             colorChanger.SetColor(color);
         }
 
+        public void ResetColor()
+        {
+            colorChanger.ResetColor();
+        }
+
         public override void ResetView()
         {
             playerTriggerDetector.Triggered -= OnTriggered;
-            colorChanger.ResetColor();
+            ResetColor();
             base.ResetView();
         }
     }

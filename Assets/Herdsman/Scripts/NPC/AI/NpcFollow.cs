@@ -46,6 +46,7 @@ namespace NPC.AI
                 }
                 if ((aiModel.TransformToFollow.position - transform.localPosition).magnitude > followDist)
                 {
+                    aiModel.OnFollowCanceled?.Invoke();
                     aiModel.StateType = NpcStateType.Patrol;
                     return;
                 }

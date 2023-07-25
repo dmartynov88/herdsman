@@ -25,10 +25,16 @@ namespace NPC.LocalMode.Entity
         protected override void OnViewReady()
         {
             aiMovementHanlder = new AiMovementHanlder(View, aiMovementData);
+            aiMovementHanlder.FollowCancelled += OnFollowCancelled;
             View.InteractableTriggered += OnInteractableTriggered;
             aiMovementHanlder.SetActive(true);
         }
-        
+
+        private void OnFollowCancelled()
+        {
+            View.ResetColor();
+        }
+
         private void OnInteractableTriggered(ITriggerDetector triggerDetector)
         {
             if(yardReached)
@@ -49,6 +55,7 @@ namespace NPC.LocalMode.Entity
 
         protected override void OnDestroy()
         {
+            aiMovementHanlder.FollowCancelled -= OnFollowCancelled;
             View.InteractableTriggered -= OnInteractableTriggered;
             aiMovementHanlder?.Dispose();
         }

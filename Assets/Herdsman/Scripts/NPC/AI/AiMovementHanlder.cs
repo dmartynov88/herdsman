@@ -13,6 +13,8 @@ namespace NPC.AI
         /// For coop mode.
         /// </summary>
         public bool HasFollowTarget { get; private set; }
+
+        public event Action FollowCancelled;
         
         private readonly AiModel aiModel;
         private readonly Dictionary<NpcStateType, NpcStateBase> behaviourStates;
@@ -23,11 +25,17 @@ namespace NPC.AI
         {
             aiModel = new AiModel(movementController, aiMovementData);
             aiModel.OnStateChanged += OnStateChanged;
+            aiModel.OnFollowCanceled = OnFollowCanceled;
             behaviourStates = new()
             {
                 { NpcStateType.Patrol , new NpcPatrol(aiModel)},
                 { NpcStateType.Follow , new NpcFollow(aiModel)}
             };
+        }
+
+        private void OnFollowCanceled()
+        {
+            FollowCancelled?.Invoke();
         }
 
         public void SetActive(bool isActive)

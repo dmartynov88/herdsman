@@ -6,6 +6,7 @@ namespace NPC.AI
 {
     public class AiModel
     {
+        public Action OnFollowCanceled;
         public Action OnStateChanged;
         public IMovementController MovementController { get; private set; }
         public AiMovementData AiMovementData { get; private set; }
